@@ -23,6 +23,9 @@
     </style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-pemprov-bali.png') }}">
 </head>
 <body>
     <div id="app">
@@ -104,6 +107,33 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="footer bg-primary text-white">
+            <div class="container pt-4 pb-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-stretch">
+                            <div class="span2">
+                                <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
+                                {{-- {{ config('app.name', 'Laravel') }} --}}
+                            </div>
+                            <div class="span10 align-self-center" style="margin-left: 10px">
+                                <p class="m-0 p-0" style="line-height: 1.2">Pemerintah Provinsi Bali</p>
+                                <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum Pemerintah Provinsi Bali</strong></p>
+                            </div>
+                        </div>
+                        <br />
+                        <p style="line-height: 1.2">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="m-0 p-0">Kebijakan Privasi</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

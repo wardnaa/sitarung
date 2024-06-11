@@ -53,16 +53,16 @@
                     <ul class="navbar-nav me-auto">
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
+                        <li class="nav-item p-lg-2">
                             <a class="nav-link" href="#">{{ __('Beranda') }}</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-lg-2">
                             <a class="nav-link" href="#">{{ __('Selayang Pandang') }}</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-lg-2">
                             <a class="nav-link" href="#">{{ __('Panduan') }}</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item p-lg-2">
                             <a class="nav-link" href="#">{{ __('Kontak') }}</a>
                         </li>
                     </ul>

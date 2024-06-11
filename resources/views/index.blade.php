@@ -5,17 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body" id="map">
-                    Test
+                {{-- <div class="card-header">{{ __('Dashboard') }}</div> --}}
+                <div class="card-body m-0 p-0">
+                    <div id="map" style="height: 700px"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
     var map = L.map('map').setView([-8.409518, 115.188919], 10);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

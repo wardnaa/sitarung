@@ -1,3 +1,24 @@
+// Override Bootstrap variables
+$primary: #00479B; // Replace with your desired primary color
+
+.navbar-nav .separator {
+    width: 1px;
+    height: 40px; /* Adjust height according to your navbar height */
+    background-color: #ddd; /* Adjust color as needed */
+    margin: 0 10px; /* Adjust spacing as needed */
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #00479B;  /* Text color */
+    border-radius: 4px;  /* Rounded corners */
+    font-weight: bold;  /* Bold text */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #00479B;  /* Text color on hover */
+    border-radius: 4px;  /* Rounded corners */
+}
+
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                {{-- <div class="card-header">{{ __('Dashboard') }}</div> --}}
+                <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
                 <div class="card-body m-0 p-0">
                     <div id="map" style="height: 700px"></div>
                 </div>

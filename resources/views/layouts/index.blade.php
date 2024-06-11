@@ -30,8 +30,8 @@
 <body>
     <div id="app">
         <div class="bg-primary text-white" style="padding:0; height:10px">&nbsp;</div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white shadow-sm">
+            <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="d-flex align-items-stretch">
                     <div class="span2">
@@ -53,17 +53,20 @@
                     <ul class="navbar-nav me-auto">
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item p-lg-2">
-                            <a class="nav-link" href="#">{{ __('Beranda') }}</a>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link active" href="#">{{ __('BERANDA') }}</a>
                         </li>
-                        <li class="nav-item p-lg-2">
-                            <a class="nav-link" href="#">{{ __('Selayang Pandang') }}</a>
+                        <li class="nav-item separator"></li>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link" href="#">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
-                        <li class="nav-item p-lg-2">
-                            <a class="nav-link" href="#">{{ __('Panduan') }}</a>
+                        <li class="nav-item separator"></li>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link" href="#">{{ __('PANDUAN') }}</a>
                         </li>
-                        <li class="nav-item p-lg-2">
-                            <a class="nav-link" href="#">{{ __('Kontak') }}</a>
+                        <li class="nav-item separator"></li>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link" href="#">{{ __('KONTAK KAMI') }}</a>
                         </li>
                     </ul>
 

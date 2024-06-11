@@ -121,7 +121,7 @@
                         <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
                     </div>
                     <div class="col-md-4">
-                        <p class="m-0 p-0">Kebijakan Privasi</p>
+                        <p class="m-0 p-0"><strong>Kebijakan Privasi</strong></p>
                     </div>
                 </div>
             </div>

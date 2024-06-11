@@ -30,6 +30,7 @@
 <body>
     <div id="app">
         <div class="bg-primary text-white" style="padding:0; height:10px">&nbsp;</div>
+        <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white shadow-sm">
             <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -111,6 +112,7 @@
             @yield('content')
         </main>
 
+        <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div>
         <footer class="footer bg-primary text-white">
             <div class="container pt-4 pb-4">
                 <div class="row">

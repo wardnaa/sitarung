@@ -57,15 +57,15 @@
                         <li class="nav-item p-lg-1">
                             <a class="nav-link active" href="#">{{ __('BERANDA') }}</a>
                         </li>
-                        <li class="nav-item separator"></li>
+                        <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
                             <a class="nav-link" href="#">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
-                        <li class="nav-item separator"></li>
+                        <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
                             <a class="nav-link" href="#">{{ __('PANDUAN') }}</a>
                         </li>
-                        <li class="nav-item separator"></li>
+                        <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
                             <a class="nav-link" href="#">{{ __('KONTAK KAMI') }}</a>
                         </li>

@@ -8,68 +8,28 @@
                 <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
                 <div class="card-body m-0 p-0">
                     <div id="map" style="height: 700px"></div>
-                    <div id="element-on-top">
-                        <!-- icon toggle -->
-                        <span class="material-symbols-outlined" id="collapsebtn" style="border: 1px solid #ccc; background: white">
-                            menu
-                        </span>
-                        <div class="sidebar" style="background-color: white">
-                            <div class="sidebar-header">
-                            </div>
-                            <ul class="sidebar-list">
-                                <li>
-                                    <a href="#">Beranda</a>
-                                </li>
-                                <li>
-                                    <a href="#">Selayang Pandang</a>
-                                </li>
-                                <li>
-                                    <a href="#">Panduan</a>
-                                </li>
-                                <li>
-                                    <a href="#">Kontak Kami</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @include('layouts.sidebar')
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <!-- modal example -->
 <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title text-primary" id="feature-title"></h4>
-          </div>
-          <div class="modal-body" id="feature-info"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-<style>
-    #element-on-top {
-        position: absolute;
-        top: 40px;
-        padding: 10px;
-        z-index: 1000;
-        width: 300px;
-        height: 700px;
-    }
-
-    .sidebar { 
-        min-height: 500px;
-        display: none;
-    }
-</style>
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title text-primary" id="feature-title"></h4>
+        </div>
+        <div class="modal-body" id="feature-info"></div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script type="text/javascript">
     var map = L.map('map').setView([-8.398190, 115.188038], 10);
@@ -91,29 +51,7 @@
         .bindPopup('Bali<br>Island of the Gods')
         .openPopup();
 
-
-
-    // sidebar
-
-    var elementOnTop = document.getElementById('element-on-top');
-    var sidebar = document.querySelector('.sidebar');
-    var collapsebtn = document.getElementById('collapsebtn');
-
-    collapsebtn.addEventListener('click', function() {
-        if (sidebar.style.display === 'none' || sidebar.style.display === '') {
-            console.log('block');
-            sidebar.style.display = 'block';
-            elementOnTop.style.backgroundColor = 'white';
-        } else {
-            sidebar.style.display = 'none';
-            elementOnTop.style.backgroundColor = 'transparent';
-        }
-
-        collapsebtn.innerText = collapsebtn.innerText === 'close' ? 'menu' : 'close';
-    });
-
     // geojson garis batas kecamatan
-
     var bataskec = L.geoJson(null, {
         style: function (feature) {
             return {
@@ -159,7 +97,6 @@
     const data = {}
     bataskec.addData(data);
     map.addLayer(bataskec);
-
 
 </script>
 @endsection

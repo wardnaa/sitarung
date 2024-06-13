@@ -18,6 +18,20 @@ $primary: #00479B; // Replace with your desired primary color
     border-radius: 4px;  /* Rounded corners */
 }
 
+#element-on-top {
+    position: absolute;
+    top: 40px;
+    padding: 10px;
+    z-index: 1000;
+    width: 300px;
+    height: 700px;
+}
+
+.sidebar { 
+    min-height: 500px;
+    display: none;
+}
+
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 

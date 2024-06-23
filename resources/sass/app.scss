@@ -1,5 +1,16 @@
 $primary: #00479B; // Replace with your desired primary color
 
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
 .navbar-nav .separator {
     width: 1px;
     height: 40px; /* Adjust height according to your navbar height */
@@ -18,18 +29,74 @@ $primary: #00479B; // Replace with your desired primary color
     border-radius: 4px;  /* Rounded corners */
 }
 
-#element-on-top {
+#element-on-top-left {
     position: absolute;
     top: 40px;
     padding: 10px;
     z-index: 1000;
-    width: 300px;
-    height: 700px;
+    width: 310px;
+    height: 702px;
 }
 
-.sidebar { 
+#element-on-top-right {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    padding: 10px;
+    z-index: 1000;
+    width: 310px;
+    height: 664px;
+}
+
+#koordinat {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    padding: 10px;
+    z-index: 1000;
+    width: 310px;
+    display: none;
+    // height: 702px;
+}
+
+.nav-container {
+    max-width: 100%;
+    /* Lebar maksimal */
+    overflow-x: auto;
+    /* Scroll horizontal */
+    white-space: nowrap;
+    /* Mencegah wrap ke baris baru */
+}
+
+.sidebar-left { 
     min-height: 500px;
     display: none;
+    // background-color: white;
+}
+
+.sidebar-right { 
+    min-height: 500px;
+    display: none;
+    // background-color: white;
+}
+
+
+.sidebar_toggle {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: white;
+    position: absolute;
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.label-group {
+    margin-bottom: 0.5rem;
 }
 
 // Fonts

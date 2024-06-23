@@ -40,9 +40,21 @@
             + 'OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.control.zoom({
-        position: 'topright'
-    }).addTo(map);
+    // L.control.zoom({
+    //     position: 'topright'
+    // }).addTo(map);
+
+    // custom zoom control
+    const mapin = document.getElementById('mapin');
+    const mapout = document.getElementById('mapout');
+
+    mapin.addEventListener('click', function() {
+        map.zoomIn();
+    });
+
+    mapout.addEventListener('click', function() {
+        map.zoomOut();
+    });
 
     // remove default zoom control
     map.zoomControl.remove();
@@ -94,9 +106,9 @@
         }
     });
 
-    const data = {}
-    bataskec.addData(data);
-    map.addLayer(bataskec);
+    // const data = {}
+    // bataskec.addData(data);
+    // map.addLayer(bataskec);
 
 </script>
 @endsection

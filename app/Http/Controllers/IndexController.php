@@ -43,6 +43,11 @@ class IndexController extends Controller
             ->where('kecamatan.kabupaten_id', $id)
             ->select('kecamatan.*', 'kabupaten.nama as kabupaten')
             ->get();
+        // convert from capital to ucwords
+        foreach ($datas as $data) {
+            $data->nama = ucwords(strtolower($data->nama));
+            $data->kabupaten = ucwords(strtolower($data->kabupaten));
+        }
         return response()->json($datas);
     }
 }

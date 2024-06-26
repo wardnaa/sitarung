@@ -7,9 +7,11 @@
                 url: "{{ url('kecamatan') }}" + '/' + kabupatenId,
                 type: 'GET',
                 success: function(response) {
+                    console.log(response);
                     $('#kecamatan').append('<option selected>Pilih Kecamatan</option>');
                     $.each(response, function(key, value) {
-                        $('#kecamatan').append('<option value="' + value['id'] + '">' + value['nama'] + '</option>');
+                        // Non capital letter
+                        $('#kecamatan').append('<option value="' + value.id + '">' + value.nama + '</option>');
                     });
                 },
                 error: function(xhr) {

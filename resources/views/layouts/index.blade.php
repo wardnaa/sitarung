@@ -61,19 +61,19 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link active" href="#">{{ __('BERANDA') }}</a>
+                            <a class="nav-link active" href="{{ url('/') }}">{{ __('BERANDA') }}</a>
                         </li>
                         <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="#">{{ __('SELAYANG PANDANG') }}</a>
+                            <a class="nav-link" href="{{ url('selayang-pandang') }}">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
                         <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="#">{{ __('PANDUAN') }}</a>
+                            <a class="nav-link" href="{{ url('panduan') }}">{{ __('PANDUAN') }}</a>
                         </li>
                         <li class="nav-item separator d-none d-lg-block"></li>
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="#">{{ __('KONTAK KAMI') }}</a>
+                            <a class="nav-link" href="{{ url('kontak') }}">{{ __('KONTAK KAMI') }}</a>
                         </li>
                     </ul>
 

@@ -18,4 +18,22 @@ class IndexController extends Controller
         $kecamatan = Kecamatan::where('kabupaten_id', 5101)->get();
         return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan'));
     }
+
+    public function tentang()
+    {
+        $disclaimer = Disclaimer::where('status', 1)->first();
+        return view('pages.tentang', compact('disclaimer'));
+    }
+
+    public function panduan()
+    {
+        $disclaimer = Disclaimer::where('status', 1)->first();
+        return view('pages.panduan', compact('disclaimer'));
+    }
+
+    public function kontak()
+    {
+        $disclaimer = Disclaimer::where('status', 1)->first();
+        return view('pages.kontak', compact('disclaimer'));
+    }
 }

@@ -16,6 +16,6 @@ class IndexController extends Controller
         $provinsi = Provinsi::where('id', 51)->get();
         $kabupaten = Kabupaten::where('provinsi_id', 51)->get();
         $kecamatan = Kecamatan::where('kabupaten_id', 5101)->get();
-        return view('index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan'));
+        return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan'));
     }
 }

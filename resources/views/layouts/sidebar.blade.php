@@ -1,23 +1,44 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#kabupaten').change(function() {
+            var kabupatenId = $(this).val();
+            $('#kecamatan').empty();
+            $.ajax({
+                url: "{{ url('kecamatan') }}" + '/' + kabupatenId,
+                type: 'GET',
+                success: function(response) {
+                    $('#kecamatan').append('<option selected>Pilih Kecamatan</option>');
+                    $.each(response, function(key, value) {
+                        $('#kecamatan').append('<option value="' + value['id'] + '">' + value['nama'] + '</option>');
+                    });
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 <div id="element-on-top-right">
     <button class="btn btn-info btn-sm float-end text-white" style="display: flex" id="btnkoordinat">info koordinat
         <span class="material-symbols-outlined" style="font-size: 20px">location_on</span>
     </button>
 
     <div class="sidebar-right">
-       <div style="background-color: #f4f5f9">Detail Administrasi</div>
-       <hr>
-       <b>Provinsi</b>
-       <p>Bali</p>
-       <b>Kecamatan</b>
-       <p>Denpasar Utara</p>
-       <b>Kelurahan</b>
-       <p>Desa Mongal</p>
-       <b>Nama Jalan</b>
-       <p>Jalan Lebe Kader</p>
-       <b>Kode Pos</b>
-       <p>80238</p>
-       <hr>
-       <div class="nav-container">
+        <div style="background-color: #f4f5f9">Detail Administrasi</div>
+        <hr>
+        <b>Provinsi</b>
+        <p>Bali</p>
+        <b>Kecamatan</b>
+        <p>Denpasar Utara</p>
+        <b>Kelurahan</b>
+        <p>Desa Mongal</p>
+        <b>Nama Jalan</b>
+        <p>Jalan Lebe Kader</p>
+        <b>Kode Pos</b>
+        <p>80238</p>
+        <hr>
+        <div class="nav-container">
             <nav class="nav" style="flex-wrap: nowrap">
                 <a class="nav-link active" aria-current="page" href="#">Active</a>
                 <a class="nav-link" href="#">Link</a>
@@ -27,9 +48,7 @@
             </nav>
         </div>
         <hr>
-
         <p>Exmple Data : </p>
-        
     </div>
 </div>
 <div id="koordinat" style="background-color: #00bcd4" class="text-white">
@@ -67,7 +86,7 @@
         <hr>
         <div class="form-group">
             <label class="label-group">Pilih <b>Provinsi</b></label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" id="provinsi">
                 {{-- <option selected>Open this select menu</option> --}}
                 @foreach ($provinsi as $item)
                     <option value="{{ $item->id }}" selected>{{ ucwords(strtolower($item->nama)) }}</option>
@@ -76,7 +95,7 @@
         </div>
         <div class="form-group">
             <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" id="kabupaten">
                 <option selected>Pilih Kabupaten</option>
                 @foreach ($kabupaten as $item)
                     <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
@@ -85,11 +104,11 @@
         </div>
         <div class="form-group">
             <label class="label-group">Pilih <b>Kecamatan</b></label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" id="kecamatan">
                 <option selected>Pilih Kecamatan</option>
-                @foreach ($kecamatan as $item)
+                {{-- @foreach ($kecamatan as $item)
                     <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
         </div>
         <div class="form-group">

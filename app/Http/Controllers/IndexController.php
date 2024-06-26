@@ -36,4 +36,13 @@ class IndexController extends Controller
         $disclaimer = Disclaimer::where('status', 1)->first();
         return view('pages.kontak', compact('disclaimer'));
     }
+
+    public function kecamatan($id)
+    {
+        $datas = Kecamatan::join('kabupaten', 'kecamatan.kabupaten_id', 'kabupaten.id')
+            ->where('kecamatan.kabupaten_id', $id)
+            ->select('kecamatan.*', 'kabupaten.nama as kabupaten')
+            ->get();
+        return response()->json($datas);
+    }
 }

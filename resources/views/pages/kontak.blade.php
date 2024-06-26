@@ -6,7 +6,8 @@
         <div class="card">
             <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
             <div class="card-body">
-                <h4>Kontak Kami</h4>
+                <h4 style="font-weight: bold;">Kontak Kami</h4>
+                <hr>
             </div>
         </div>
     </div>

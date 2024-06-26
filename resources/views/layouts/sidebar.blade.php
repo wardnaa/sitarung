@@ -7,7 +7,7 @@
                 url: "{{ url('kecamatan') }}" + '/' + kabupatenId,
                 type: 'GET',
                 success: function(response) {
-                    console.log(response);
+                    // console.log(response);
                     $('#kecamatan').append('<option selected>Pilih Kecamatan</option>');
                     $.each(response, function(key, value) {
                         // Non capital letter
@@ -113,7 +113,7 @@
                 @endforeach --}}
             </select>
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label class="label-group">Pilih <b>RDTR</b></label>
             <select class="form-select" aria-label="Default select example">
                 <option selected>Open this select menu</option>
@@ -121,7 +121,7 @@
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
-        </div>
+        </div> --}}
         <div class="d-grid gap-1">
             <button class="btn btn-primary" type="button">Terapkan Layer</button>
         </div>

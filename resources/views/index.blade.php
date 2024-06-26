@@ -15,21 +15,24 @@
     </div>
 </div>
 
-<!-- modal example -->
-<div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+<!-- Add Modal Disclaimer -->
+<div class="modal fade" id="disclaimer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <div class="modal-header">
-        <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title text-primary" id="feature-title"></h4>
-        </div>
-        <div class="modal-body" id="feature-info"></div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-    </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="disclaimerLabel">{{ $disclaimer->judul }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        {!! $disclaimer->konten !!}
+    </div>
+    <div class="modal-footer">
+        {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="setuju">Saya Setuju</button>
+    </div>
+    </div>
+</div>
+</div>
 
 <script type="text/javascript">
     var map = L.map('map').setView([-8.398190, 115.188038], 10);
@@ -109,6 +112,17 @@
     // const data = {}
     // bataskec.addData(data);
     // map.addLayer(bataskec);
+    $(document).ready(function() {
+        // setuju button, hide modal disclaimer and not show 1 day with cookie
+        $('#setuju').click(function() {
+            $('#disclaimer').modal('hide');
+            document.cookie = "disclaimer=1; max-age=" + 60 * 60 * 24;
+        });
 
+        // show modal disclaimer if not show 1 day
+        if (document.cookie.indexOf('disclaimer=1') == -1) {
+            $('#disclaimer').modal('show');
+        }
+    });
 </script>
 @endsection

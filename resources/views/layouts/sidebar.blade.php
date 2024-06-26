@@ -68,19 +68,28 @@
         <div class="form-group">
             <label class="label-group">Pilih <b>Provinsi</b></label>
             <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {{-- <option selected>Open this select menu</option> --}}
+                @foreach ($provinsi as $item)
+                    <option value="{{ $item->id }}" selected>{{ ucwords(strtolower($item->nama)) }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
-           <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
+            <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
             <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Pilih Kabupaten</option>
+                @foreach ($kabupaten as $item)
+                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="label-group">Pilih <b>Kecamatan</b></label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Pilih Kecamatan</option>
+                @foreach ($kecamatan as $item)
+                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">

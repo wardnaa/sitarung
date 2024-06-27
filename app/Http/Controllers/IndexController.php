@@ -13,9 +13,9 @@ class IndexController extends Controller
     public function index()
     {
         $disclaimer = Disclaimer::where('status', 1)->first();
-        $provinsi = Provinsi::where('id', 51)->get();
-        $kabupaten = Kabupaten::where('provinsi_id', 51)->get();
-        $kecamatan = Kecamatan::where('kabupaten_id', 5101)->get();
+        $provinsi = Provinsi::where('id', 51)->orderBy('nama', 'asc')->get();
+        $kabupaten = Kabupaten::where('provinsi_id', 51)->orderBy('nama', 'asc')->get();
+        $kecamatan = Kecamatan::where('kabupaten_id', 5101)->orderBy('nama', 'asc')->get();
         return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan'));
     }
 
@@ -42,6 +42,7 @@ class IndexController extends Controller
         $datas = Kecamatan::join('kabupaten', 'kecamatan.kabupaten_id', 'kabupaten.id')
             ->where('kecamatan.kabupaten_id', $id)
             ->select('kecamatan.*', 'kabupaten.nama as kabupaten')
+            ->orderBy('kecamatan.nama', 'asc')
             ->get();
         // convert from capital to ucwords
         foreach ($datas as $data) {

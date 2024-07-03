@@ -29,6 +29,16 @@ $primary: #00479B; // Replace with your desired primary color
     border-radius: 4px;  /* Rounded corners */
 }
 
+span {
+    cursor: pointer;
+    /* Mengubah kursor menjadi tanda tangan saat di atasnya */
+}
+
+span:active {
+    transform: translateY(1px);
+    /* Mendorong elemen sedikit ke bawah saat ditekan */
+}
+
 #element-on-top-left {
     position: absolute;
     top: 40px;
@@ -97,6 +107,37 @@ $primary: #00479B; // Replace with your desired primary color
 
 .label-group {
     margin-bottom: 0.5rem;
+}
+
+
+.searchbar_sidebar_container {
+    margin-top: 110px;
+    position: absolute;
+    width: 66%;
+    height: 30px;
+}
+
+.searchbar_sidebar_input {
+    border-radius: 0 0 0 0 !important;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    height: 30px;
+    width: 100%;
+    padding: 0 .5em;
+}
+
+.information_container {
+    background: white;
+    padding: 11px;
+    margin-top: 149px;
+    width: 87%;
+    height: 300px;
+    overflow: auto;
+    position: absolute;
+    border-radius: 3px;
+}
+
+.block_color_text_container {
+    display: flex;
 }
 
 // Fonts

@@ -68,11 +68,30 @@
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="collapsebtn" >Menu</span> 
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapin" style="margin-top: 40px">Add</span> 
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapout" style="margin-top: 73px">remove</span>
-    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 110px">print</span>
-    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 149px">window</span>  
+    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 110px" id="search_toggle">search</span>
+    <div class="searchbar_sidebar_container" id="search_tempat_container" style="display: none;">
+        <input type="text" class="searchbar_sidebar_input" placeholder="Cari alamat atau tempat" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <span class="material-symbols-outlined sidebar_toggle">search</span>
+    </div>
+    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 149px" id="information_toggle">expand_content</span>
+    <div class="information_container" style="display: none">
+        <h3 style="font-size: 14px">RDTR 51A7 KAWASAN PERKOTAAN NEGARA</h3>
+
+        <div style="margin-left: 12px;">
+            <p>Rencana Pola Ruang</p>
+            <div class="block_color_text_container">
+                <img alt="Badan Air" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdPvfPpPiUGZKnyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5W4E7T2J3aUAAAAASUVORK5CYII=" border="0" width="20" height="20" class="esri-legend__symbol" style="opacity: 0.7;">
+                <div>Badan Air</div>
+            </div>
+            <div class="block_color_text_container">
+                <img alt="Badan Air" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdPvfPpPiUGZKnyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5W4E7T2J3aUAAAAASUVORK5CYII=" border="0" width="20" height="20" class="esri-legend__symbol" style="opacity: 0.7;">
+                <div>Badan Air</div>
+            </div>
+        </div>
+    </div>
     <div class="sidebar-left" style="background-color: white">
-        <hr>
-        <nav class="nav" style="font-size: 14px">
+        <!-- <hr> -->
+        <!-- <nav class="nav" style="font-size: 14px">
             <a class="nav-link active" aria-current="page" href="#" style="display: flex">
                 <span class="material-symbols-outlined" style="font-size: 20px">stacks</span>
               Layer</a>
@@ -84,9 +103,9 @@
                 <span class="material-symbols-outlined" style="font-size: 20px">construction</span>
                   Alat
             </a>
-        </nav>
-        <hr>
-        <div class="form-group">
+        </nav> -->
+        <!-- <hr> -->
+        <div class="form-group" style="margin-top; 10pxs">
             <label class="label-group">Pilih <b>Provinsi</b></label>
             <select class="form-select" aria-label="Default select example" id="provinsi">
                 {{-- <option selected>Open this select menu</option> --}}
@@ -94,6 +113,11 @@
                     <option value="{{ $item->id }}" selected>{{ ucwords(strtolower($item->nama)) }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" name="a"> Darat
+            <input type="checkbox" name="a"> Perairan
         </div>
         <div class="form-group">
             <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
@@ -104,6 +128,7 @@
                 @endforeach
             </select>
         </div>
+<!--         
         <div class="form-group">
             <label class="label-group">Pilih <b>Kecamatan</b></label>
             <select class="form-select" aria-label="Default select example" id="kecamatan">
@@ -112,7 +137,7 @@
                     <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
                 @endforeach --}}
             </select>
-        </div>
+        </div> -->
         {{-- <div class="form-group">
             <label class="label-group">Pilih <b>RDTR</b></label>
             <select class="form-select" aria-label="Default select example">
@@ -148,6 +173,49 @@
     var btnkoordinat = document.getElementById('btnkoordinat');
     var koordinatPanel = document.getElementById('koordinat');
     var btnclosekoordinat = document.getElementById('btnclosekoordinat');
+    var search_toggle = document.getElementById('search_toggle');
+    var search_tempat = document.getElementById('search_tempat_container');
+    var information_toggle = document.getElementById('information_toggle');
+    var information_container = document.querySelector('.information_container');
+    localStorage.setItem('sidebarshow', 'false');
+
+
+    information_toggle.addEventListener('click', function() {
+        var sidebarshow = localStorage.getItem('sidebarshow');
+        let marginLeft = '34px';
+
+        if (sidebarshow === 'true') {
+            marginLeft = '341px';
+        }
+        if (information_container.style.display === 'none' || information_container.style.display === '') {
+            information_container.style.marginLeft = marginLeft;
+            information_container.style.display = 'block';
+            information_toggle.innerText = 'keyboard_double_arrow_left';
+        } else {
+            
+            information_container.style.display = 'none';
+            information_toggle.innerText = 'expand_content';
+        }
+    });
+
+
+    search_toggle.addEventListener('click', function() {
+        var sidebarshow = localStorage.getItem('sidebarshow');
+        let marginLeft = '33px';
+
+        if (sidebarshow === 'true') {
+            marginLeft = '338px';
+        }
+
+        if (search_tempat.style.display === 'none' || search_tempat.style.display === '') {
+            search_tempat.style.display = 'block';
+            search_tempat.style.marginLeft = marginLeft;
+            search_toggle.innerText = 'keyboard_double_arrow_left';
+        } else {
+            search_tempat.style.display = 'none';
+            search_toggle.innerText = 'search';
+        }
+    });
 
 
     btnclosekoordinat.addEventListener('click', function() {
@@ -156,6 +224,7 @@
         sidebarRight.style.display = 'none';
         elementOnTopRight.style.top = '40px';
         elementOnTopRight.style.backgroundColor = 'transparent';
+        localStorage.setItem('sidebarshow', 'false');
     });
 
 
@@ -176,16 +245,22 @@
 
     collapsebtn.addEventListener('click', function() {
         if (sidebarLeft.style.display === 'none' || sidebarLeft.style.display === '') {
+            localStorage.setItem('sidebarshow', 'true');
             console.log('block');
             sidebarLeft.style.display = 'block';
             // collapsebtn.style.marginLeft = '300px';
+            search_tempat.style.marginLeft = '338px';
+            information_container.style.marginLeft = '341px';
             for (let i = 0; i < floatingIcon.length; i++) {
                 floatingIcon[i].style.marginLeft = '304px';
             }
             elementOnTopLeft.style.backgroundColor = 'white';
         } else {
+            localStorage.setItem('sidebarshow', 'false');
             sidebarLeft.style.display = 'none';
             elementOnTopLeft.style.backgroundColor = 'transparent';
+            search_tempat.style.marginLeft = '33px';
+            information_container.style.marginLeft = '34px';
             // collapsebtn.style.marginLeft = '0';
             for (let i = 0; i < floatingIcon.length; i++) {
                 floatingIcon[i].style.marginLeft = '0';

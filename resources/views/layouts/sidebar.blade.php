@@ -109,16 +109,17 @@
             <div class="card-header bg-primary text-light">{{ __('Basemap') }}</div>
             <div class="card-body">
                 <ul class="list-group">
+                    <label class="label-group">Pilih <b>Maps</b></label>
                     <li class="list-group-item">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="streetmap" value="option1" checked>
-                            <label class="form-check-label" for="streetmap">Street Map</label>
+                            <label class="form-check-label" for="streetmap"><strong>Street Map</strong></label>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="satelit" value="option1">
-                            <label class="form-check-label" for="satelit">Bing Satelit</label>
+                            <label class="form-check-label" for="satelit"><strong>Bing Satelit</strong></label>
                         </div>
                     </li>
                 </ul>
@@ -153,7 +154,7 @@
             <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
             <div class="card-body"> 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
                     <label class="form-check-label" for="defaultCheck1">
                         <strong>Pilih Semua Layer</strong>
                     </label>
@@ -174,7 +175,7 @@
                             <div class="row">
                                 <div class="col-9">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}">
+                                        <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
                                         <label class="form-check-label" for="{{ $item->id }}">
                                             {{ $item->nama }}
                                         </label>
@@ -194,7 +195,7 @@
                                 <div class="row">
                                     <div class="col-9">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input me-1" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
+                                            <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
                                             <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
                                         </div>
                                     </div>
@@ -321,4 +322,11 @@
         collapsebtn.innerText = collapsebtn.innerText === 'close' ? 'menu' : 'close';
     });
     // sidebar end
+
+    function selectAll() {
+        var checkboxes = document.querySelectorAll('input[id="polaruang"]');
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = !checkbox.checked;
+        });
+    }
 </script>

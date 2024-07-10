@@ -105,60 +105,111 @@
             </a>
         </nav> -->
         <!-- <hr> -->
-        <div class="form-group" style="margin-top; 10pxs">
-            <label class="label-group">Pilih <b>Provinsi</b></label>
-            <select class="form-select" aria-label="Default select example" id="provinsi">
-                {{-- <option selected>Open this select menu</option> --}}
-                @foreach ($provinsi as $item)
-                    <option value="{{ $item->id }}" selected>{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach
-            </select>
+        <div class="card">
+            <div class="card-header bg-primary text-light">{{ __('Basemap') }}</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="streetmap" value="option1" checked>
+                            <label class="form-check-label" for="streetmap">Street Map</label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="satelit" value="option1">
+                            <label class="form-check-label" for="satelit">Bing Satelit</label>
+                        </div>
+                    </li>
+                </ul>
+                <hr />
+                <div class="form-group row">
+                    <div class="col-5">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="daratan">
+                            <label class="form-check-label" for="daratan"><strong>Daratan</strong></label>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="perairan">
+                            <label class="form-check-label" for="perairan"><strong>Perairan</strong></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
+                    <select class="form-select" aria-label="Default select example" id="kabupaten">
+                        <option selected>Pilih Kabupaten</option>
+                        @foreach ($kabupaten as $item)
+                            <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            <input type="checkbox" name="a"> Darat
-            <input type="checkbox" name="a"> Perairan
-        </div>
-        <div class="form-group">
-            <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
-            <select class="form-select" aria-label="Default select example" id="kabupaten">
-                <option selected>Pilih Kabupaten</option>
-                @foreach ($kabupaten as $item)
-                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach
-            </select>
-        </div>
-<!--         
-        <div class="form-group">
-            <label class="label-group">Pilih <b>Kecamatan</b></label>
-            <select class="form-select" aria-label="Default select example" id="kecamatan">
-                <option selected>Pilih Kecamatan</option>
-                {{-- @foreach ($kecamatan as $item)
-                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach --}}
-            </select>
-        </div> -->
-        {{-- <div class="form-group">
-            <label class="label-group">Pilih <b>RDTR</b></label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div> --}}
-        <div class="d-grid gap-1">
-            <button class="btn btn-primary" type="button">Terapkan Layer</button>
-        </div>
-        <hr>
-        <div class="form-group">
-            <label>Saring berdasarkan <b>Kegiatan</b></label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Semua</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
+            <div class="card-body"> 
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div>
+                <div class="list-group mt-2">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($polaruang as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                            {{-- <div class="form-check"> --}}
+                                {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                                <label class="form-check-label" for="{{ $item->id }}">
+                                    <strong>{{ $item->nama }}</strong>
+                                </label>
+                            {{-- </div> --}}
+                        @else
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}">
+                                        <label class="form-check-label" for="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </label>
+                                        <!-- Add arrow down in right -->
+                                        {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span>
+                                </div>
+                            </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                            <div class="">
+                            @foreach ($item->children as $child)
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input me-1" type="checkbox" value="{{ $child->id }}" id="{{ $child->id }}">
+                                            <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 align-items-stretch">
+                                        <!-- badge -->
+                                        <span class="badge rounded-pill bg-warning mt-1" style="float: right">:::</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>

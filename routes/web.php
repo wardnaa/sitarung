@@ -15,3 +15,5 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get('/admin/kabupaten', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('admin/kabupaten', App\Http\Controllers\KabupatenController::class);
+Route::resource('admin/polaruang', App\Http\Controllers\PolaRuangController::class);
+

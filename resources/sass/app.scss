@@ -1,5 +1,10 @@
 $primary: #00479B; // Replace with your desired primary color
 $secondary: #b45c2a; // Replace with your desired secondary color
+$third: #70AD47; // Replace with your desired third color
+
+main {
+    background-color: #F2F2F2;
+}
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -10,6 +15,11 @@ $secondary: #b45c2a; // Replace with your desired secondary color
     border-radius: 1px;
     background-color: rgba(0, 0, 0, .5);
     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.bg-third {
+    background-color: $third !important;
+    color: #FFFFFF !important;
 }
 
 .navbar-nav .separator {
@@ -58,8 +68,10 @@ span:active {
     top: 40px;
     padding: 10px;
     z-index: 1000;
-    width: 310px;
+    width: 320px;
     height: 702px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #element-on-top-right {
@@ -68,7 +80,7 @@ span:active {
     right: 0;
     padding: 10px;
     z-index: 1000;
-    width: 310px;
+    width: 320px;
     height: 664px;
 }
 
@@ -78,7 +90,7 @@ span:active {
     right: 0;
     padding: 10px;
     z-index: 1000;
-    width: 310px;
+    width: 320px;
     display: none;
     // height: 702px;
 }

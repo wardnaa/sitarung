@@ -9,8 +9,8 @@
             <a href="{{ url('admin/kabupaten') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/kabupaten') ? 'active' : '' }}">
                 <span>Data Kabupaten</span>
             </a>
-            <a href="{{ url('admin/kegiatan') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/kegiatan') ? 'active' : '' }}">
-                <span>Data Kegiatan</span>
+            <a href="{{ url('admin/polaruang') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/polaruang') ? 'active' : '' }}">
+                <span>Data Pola Ruang</span>
             </a>
             <a href="{{ url('admin/pengguna') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/pengguna') ? 'active' : '' }}">
                 <span>Data Pengguna</span>

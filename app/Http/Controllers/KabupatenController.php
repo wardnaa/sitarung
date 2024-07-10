@@ -67,7 +67,7 @@ class KabupatenController extends Controller
     public function edit(string $id)
     {
         $kabupaten = Kabupaten::find($id);
-        return view('admin.kabupaten.edit', ['kabupaten' => $kabupaten]);
+        return view('admin.kabupaten.edit', compact('kabupaten'));
     }
 
     /**

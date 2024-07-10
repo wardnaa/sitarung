@@ -11,4 +11,7 @@ Route::get('/kontak', [IndexController::class, 'kontak']);
 Route::get('/kecamatan/{id}', [IndexController::class, 'kecamatan']);
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/kabupaten', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('admin/kabupaten', App\Http\Controllers\KabupatenController::class);

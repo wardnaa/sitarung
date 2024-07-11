@@ -148,7 +148,7 @@
             </select>
         </div> --}}
         <div class="d-grid gap-1">
-            <button class="btn btn-primary" type="button">Terapkan Layer</button>
+            <button class="btn btn-primary" type="button" id="btnlayer">Terapkan Layer</button>
         </div>
         <hr>
         <div class="form-group">

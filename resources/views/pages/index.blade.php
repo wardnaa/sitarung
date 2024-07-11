@@ -62,9 +62,9 @@
     // remove default zoom control
     map.zoomControl.remove();
 
-    L.marker([-8.409518, 115.188919]).addTo(map)
-        .bindPopup('Bali<br>Island of the Gods')
-        .openPopup();
+    // L.marker([-8.409518, 115.188919]).addTo(map)
+    //     .bindPopup('Bali<br>Island of the Gods')
+    //     .openPopup();
 
     // geojson garis batas kecamatan
     var bataskec = L.geoJson(null, {
@@ -109,7 +109,48 @@
         }
     });
 
-    // const data = {}
+    const darerah = {
+        '5103': "{{ url('data/badung.json') }}",
+        '5106': "{{ url('data/bangli.json') }}",
+        '5108': "{{ url('data/buleleng.json') }}",
+        '5104': "{{ url('data/gianyar.json') }}",
+        '5101': "{{ url('data/jembrana.json') }}",
+        '5107': "{{ url('data/karangasem.json') }}",
+        '5105': "{{ url('data/klungkung.json') }}",
+        '5102': "{{ url('data/tabanan.json') }}",
+        '5171': "{{ url('data/denpasar.json') }}"
+    }
+
+    const btnlayer = document.getElementById('btnlayer');
+    btnlayer.addEventListener('click', function() {
+        const kabupaten = document.getElementById('kabupaten').value;
+        const url = darerah[kabupaten];
+        $.ajax({
+            url: url,
+            dataType: "json",
+            success: function(response) {
+                bataskec.clearLayers();
+                $(response.features).each(function(key, data) {
+                    data = JSON.stringify(data);
+                    bataskec.addData(JSON.parse(data));
+                    map.addLayer(bataskec);
+                });
+            }
+        });
+    });
+
+    // const data = $.ajax({
+    //     url: "{{ url('data/badung.json') }}",
+    //     dataType: "json",
+    //     success: function(response) {
+    //         $(response.features).each(function(key, data) {
+    //             console.log(data);
+    //             data = JSON.stringify(data);
+    //             bataskec.addData(JSON.parse(data));
+    //             map.addLayer(bataskec);
+    //         });
+    //     }
+    // });
     // bataskec.addData(data);
     // map.addLayer(bataskec);
     $(document).ready(function() {

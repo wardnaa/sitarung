@@ -244,7 +244,10 @@
         item.addEventListener('click', function() {
             const id = item.value;
             const kabupatenValue = $('#kabupaten').val();
-            console.log(id);
+            if (kabupatenValue == 'Pilih Kabupaten') {
+                alert('Pilih Kabupaten terlebih dahulu');
+                return;
+            }
             switch (id) {
                 case '1':
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
@@ -326,6 +329,10 @@
     function loadPola() {
         const kabupatenValue = $('#kabupaten').val();
         const pola = document.querySelectorAll('#polaruang');
+        if (kabupatenValue == 'Pilih Kabupaten') {
+            alert('Pilih Kabupaten terlebih dahulu');
+            return;
+        }
         pola.forEach(function(item) {
             const id = item.value;
             switch (id) {

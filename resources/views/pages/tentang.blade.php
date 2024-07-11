@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
-            <div class="card-body">
+            <div class="card-body shadow">
                 <h4 style="font-weight: bold;">Selayang Pandang</h4>
                 <hr>
                 <!--Embed Youtube Video-->

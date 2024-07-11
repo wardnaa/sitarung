@@ -62,19 +62,22 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link active" href="{{ url('/') }}">{{ __('BERANDA') }}</a>
+                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">{{ __('BERANDA') }}</a>
                         </li>
                         {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('selayang-pandang') }}">{{ __('SELAYANG PANDANG') }}</a>
+                            <a class="nav-link {{ Request::is('selayang-pandang') ? 'active' : '' }}" href="{{ url('selayang-pandang') }}">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
                         {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('panduan') }}">{{ __('PANDUAN') }}</a>
+                            <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="{{ url('panduan') }}">{{ __('PANDUAN') }}</a>
                         </li>
                         {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('kontak') }}">{{ __('KONTAK KAMI') }}</a>
+                            <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="{{ url('kontak') }}">{{ __('KONTAK KAMI') }}</a>
+                        </li>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="https://oss.go.id/" target="_blank">{{ __('KKPR') }}</a>
                         </li>
                     </ul>
 
@@ -139,6 +142,10 @@
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
+                        <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p>
+                        <p class="m-0 p-0">No. Telp: (0361) 222883</p>
+                        <p class="m-0 p-0">E-mail : <a class="text-warning" href="mailto:puprkim@baliprov.go.id" target="_blank" rel="noopener">puprkim@baliprov.go.id</a></p>
+                        <p class="m-0 p-0">Facebook: <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kebijakan Privasi</strong></p>

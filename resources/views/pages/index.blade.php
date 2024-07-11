@@ -244,15 +244,19 @@
         item.addEventListener('click', function() {
             const id = item.value;
             const kabupatenValue = $('#kabupaten').val();
-            if (kabupatenValue == 'Pilih Kabupaten') {
-                alert('Pilih Kabupaten terlebih dahulu');
-                return;
-            }
             switch (id) {
                 case '1':
+                    if (kabupatenValue == 'Pilih Kabupaten') {
+                        alert('Pilih Kabupaten terlebih dahulu');
+                        return;
+                    }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
+                    if (kabupatenValue == 'Pilih Kabupaten') {
+                        alert('Pilih Kabupaten terlebih dahulu');
+                        return;
+                    }
                     item.checked ? getKabupaten(kabupatenValue) : clearLayer();
                     break;
                 case '4':
@@ -329,17 +333,21 @@
     function loadPola() {
         const kabupatenValue = $('#kabupaten').val();
         const pola = document.querySelectorAll('#polaruang');
-        if (kabupatenValue == 'Pilih Kabupaten') {
-            alert('Pilih Kabupaten terlebih dahulu');
-            return;
-        }
         pola.forEach(function(item) {
             const id = item.value;
             switch (id) {
                 case '1':
+                    if (kabupatenValue == 'Pilih Kabupaten') {
+                        alert('Pilih Kabupaten terlebih dahulu');
+                        return;
+                    }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
+                    if (kabupatenValue == 'Pilih Kabupaten') {
+                        alert('Pilih Kabupaten terlebih dahulu');
+                        return;
+                    }
                     item.checked ? getKabupaten(kabupatenValue) : clearLayer();
                     break;
             }

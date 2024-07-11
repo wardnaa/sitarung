@@ -21,7 +21,7 @@
         });
     });
 </script>
-<div id="element-on-top-right">
+<!-- <div id="element-on-top-right">
     <button class="btn btn-info btn-sm float-end text-white" style="display: flex" id="btnkoordinat">info koordinat
         <span class="material-symbols-outlined" style="font-size: 20px">location_on</span>
     </button>
@@ -61,104 +61,164 @@
 
         <span class="material-symbols-outlined" style="font-size: 20px; margin-left: 60px" id="btnclosekoordinat">close</span>
     </div>
-</div>
+</div> -->
 
-<div id="element-on-top-left">
-    <!-- icon toggle -->
+<div class="icon-toggle-container">
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="collapsebtn" >Menu</span> 
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapin" style="margin-top: 40px">Add</span> 
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapout" style="margin-top: 73px">remove</span>
     <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 110px" id="search_toggle">search</span>
     <div class="searchbar_sidebar_container" id="search_tempat_container" style="display: none;">
-        <input type="text" class="searchbar_sidebar_input" placeholder="Cari alamat atau tempat" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <span class="material-symbols-outlined sidebar_toggle">search</span>
+        <input type="text" class="searchbar_sidebar_input" id="cari_tempat" placeholder="Cari alamat atau tempat" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <span class="material-symbols-outlined sidebar_toggle" id="search_icon">search</span>
+        <div style="margin-top: 3px;" id="search_result">
+        </div>
     </div>
     <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 149px" id="information_toggle">expand_content</span>
     <div class="information_container" style="display: none">
-        <h3 style="font-size: 14px">RDTR 51A7 KAWASAN PERKOTAAN NEGARA</h3>
+        <h3 style="font-size: 14px">Detail Legenda</h3>
 
         <div style="margin-left: 12px;">
-            <p>Rencana Pola Ruang</p>
-            <div class="block_color_text_container">
-                <img alt="Badan Air" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdPvfPpPiUGZKnyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5W4E7T2J3aUAAAAASUVORK5CYII=" border="0" width="20" height="20" class="esri-legend__symbol" style="opacity: 0.7;">
-                <div>Badan Air</div>
-            </div>
-            <div class="block_color_text_container">
-                <img alt="Badan Air" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAADFJREFUOI1jYaAyYKGZgdPvfPpPiUGZKnyMKAZSC4waOGrgqIGjBtLZQFh5RjUDqQUA5W4E7T2J3aUAAAAASUVORK5CYII=" border="0" width="20" height="20" class="esri-legend__symbol" style="opacity: 0.7;">
-                <div>Badan Air</div>
-            </div>
+            <img src="img/rpr.png" width="260">
+            <br>
+            <br>
+            <img src="img/permukiman.png" width="160" style="margin-left: 10px">
+            <br>
+            <br>
+            <img src="img/arteri.png" width="260">
+            <br>
+            <br>
+            <img src="img/transport_pt.png" width="210">
+            <br>
+            <br>
+            <img src="img/energi_ln.png" width="260">
+            <br>
+            <br>
+            <img src="img/energi_pt.png" width="260">
+            <br>
+            <br>
+            <img src="img/sda_ln.png" width="200">
+            <br>
+            <br>
+            <img src="img/sda_pt.png" width="200">
+            <br>
+            <br>
+            <img src="img/lainnya_ln.png" width="230">
+            <br>
+            <br>
+            <img src="img/lainnya_pt.png" width="230">
         </div>
     </div>
+    <!-- icon toggle -->
+</div>
+<div id="element-on-top-left" class="scrollable">
     <div class="sidebar-left" style="background-color: white">
-        <!-- <hr> -->
-        <!-- <nav class="nav" style="font-size: 14px">
-            <a class="nav-link active" aria-current="page" href="#" style="display: flex">
-                <span class="material-symbols-outlined" style="font-size: 20px">stacks</span>
-              Layer</a>
-            <a class="nav-link" href="#" style="display: flex">
-                <span class="material-symbols-outlined" style="font-size: 20px">settings</span>
-                  Pengaturan
-            </a>
-            <a class="nav-link" href="#" style="display: flex">
-                <span class="material-symbols-outlined" style="font-size: 20px">construction</span>
-                  Alat
-            </a>
-        </nav> -->
-        <!-- <hr> -->
-        <div class="form-group" style="margin-top; 10pxs">
-            <label class="label-group">Pilih <b>Provinsi</b></label>
-            <select class="form-select" aria-label="Default select example" id="provinsi">
-                {{-- <option selected>Open this select menu</option> --}}
-                @foreach ($provinsi as $item)
-                    <option value="{{ $item->id }}" selected>{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach
-            </select>
+        <div class="card">
+            <div class="card-header bg-primary text-light">{{ __('Basemap') }}</div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <label class="label-group">Pilih <b>Maps</b></label>
+                    <li class="list-group-item">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="streetmap" value="option1" checked>
+                            <label class="form-check-label" for="streetmap"><strong>Street Map</strong></label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="satelit" value="option2">
+                            <label class="form-check-label" for="satelit"><strong>Bing Satelit</strong></label>
+                        </div>
+                    </li>
+                </ul>
+                <hr />
+                <div class="form-group row">
+                    <div class="col-5">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="daratan">
+                            <label class="form-check-label" for="daratan"><strong>Daratan</strong></label>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="perairan" value="perairan">
+                            <label class="form-check-label" for="perairan"><strong>Perairan</strong></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
+                    <select class="form-select" aria-label="Default select example" id="kabupaten">
+                        <option selected>Pilih Kabupaten</option>
+                        @foreach ($kabupaten as $item)
+                            <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            <input type="checkbox" name="a"> Darat
-            <input type="checkbox" name="a"> Perairan
-        </div>
-        <div class="form-group">
-            <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
-            <select class="form-select" aria-label="Default select example" id="kabupaten">
-                <option selected>Pilih Kabupaten</option>
-                @foreach ($kabupaten as $item)
-                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach
-            </select>
-        </div>
-<!--         
-        <div class="form-group">
-            <label class="label-group">Pilih <b>Kecamatan</b></label>
-            <select class="form-select" aria-label="Default select example" id="kecamatan">
-                <option selected>Pilih Kecamatan</option>
-                {{-- @foreach ($kecamatan as $item)
-                    <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
-                @endforeach --}}
-            </select>
-        </div> -->
-        {{-- <div class="form-group">
-            <label class="label-group">Pilih <b>RDTR</b></label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div> --}}
-        <div class="d-grid gap-1">
-            <button class="btn btn-primary" type="button">Terapkan Layer</button>
-        </div>
-        <hr>
-        <div class="form-group">
-            <label>Saring berdasarkan <b>Kegiatan</b></label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Semua</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
+            <div class="card-body"> 
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div> -->
+                <div class="list-group mt-2">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($polaruang as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                            {{-- <div class="form-check"> --}}
+                                {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                                <label class="form-check-label" for="{{ $item->id }}">
+                                    <strong>{{ $item->nama }}</strong>
+                                </label>
+                            {{-- </div> --}}
+                        @else
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                        <label class="form-check-label" for="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </label>
+                                        <!-- Add arrow down in right -->
+                                        {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span>
+                                </div>
+                            </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                            <div class="">
+                            @foreach ($item->children as $child)
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                            <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 align-items-stretch">
+                                        <!-- badge -->
+                                        <span class="badge rounded-pill bg-warning mt-1" style="float: right">:::</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -172,11 +232,12 @@
     var floatingIcon = document.querySelectorAll('.floating-icon');
     var btnkoordinat = document.getElementById('btnkoordinat');
     var koordinatPanel = document.getElementById('koordinat');
-    var btnclosekoordinat = document.getElementById('btnclosekoordinat');
+    // var btnclosekoordinat = document.getElementById('btnclosekoordinat');
     var search_toggle = document.getElementById('search_toggle');
     var search_tempat = document.getElementById('search_tempat_container');
     var information_toggle = document.getElementById('information_toggle');
     var information_container = document.querySelector('.information_container');
+    var icon_toogle_container = document.querySelector('.icon-toggle-container');
     localStorage.setItem('sidebarshow', 'false');
 
 
@@ -185,14 +246,13 @@
         let marginLeft = '34px';
 
         if (sidebarshow === 'true') {
-            marginLeft = '341px';
+            marginLeft = '348px';
         }
         if (information_container.style.display === 'none' || information_container.style.display === '') {
             information_container.style.marginLeft = marginLeft;
             information_container.style.display = 'block';
             information_toggle.innerText = 'keyboard_double_arrow_left';
         } else {
-            
             information_container.style.display = 'none';
             information_toggle.innerText = 'expand_content';
         }
@@ -204,7 +264,7 @@
         let marginLeft = '33px';
 
         if (sidebarshow === 'true') {
-            marginLeft = '338px';
+            marginLeft = '347px';
         }
 
         if (search_tempat.style.display === 'none' || search_tempat.style.display === '') {
@@ -218,44 +278,46 @@
     });
 
 
-    btnclosekoordinat.addEventListener('click', function() {
-        koordinatPanel.style.display = 'none';
-        btnkoordinat.style.display = 'flex';
-        sidebarRight.style.display = 'none';
-        elementOnTopRight.style.top = '40px';
-        elementOnTopRight.style.backgroundColor = 'transparent';
-        localStorage.setItem('sidebarshow', 'false');
-    });
+    // btnclosekoordinat.addEventListener('click', function() {
+    //     koordinatPanel.style.display = 'none';
+    //     btnkoordinat.style.display = 'flex';
+    //     sidebarRight.style.display = 'none';
+    //     elementOnTopRight.style.top = '40px';
+    //     elementOnTopRight.style.backgroundColor = 'transparent';
+    //     localStorage.setItem('sidebarshow', 'false');
+    // });
 
 
-    btnkoordinat.addEventListener('click', function() {
-        btnkoordinat.style.display = 'none';
-        if (sidebarRight.style.display === 'none' || sidebarRight.style.display === '') {
-            sidebarRight.style.display = 'block';
-            koordinatPanel.style.display = 'block';
-            elementOnTopRight.style.top = '77px';
-            elementOnTopRight.style.backgroundColor = 'white';
-        } else {
-            sidebarRight.style.display = 'none';
-            koordinatPanel.style.display = 'none';
-            elementOnTopRight.style.top = '40px';
-            elementOnTopRight.style.backgroundColor = 'transparent';
-        }
-    });
+    // btnkoordinat.addEventListener('click', function() {
+    //     btnkoordinat.style.display = 'none';
+    //     if (sidebarRight.style.display === 'none' || sidebarRight.style.display === '') {
+    //         sidebarRight.style.display = 'block';
+    //         koordinatPanel.style.display = 'block';
+    //         elementOnTopRight.style.top = '77px';
+    //         elementOnTopRight.style.backgroundColor = 'white';
+    //     } else {
+    //         sidebarRight.style.display = 'none';
+    //         koordinatPanel.style.display = 'none';
+    //         elementOnTopRight.style.top = '40px';
+    //         elementOnTopRight.style.backgroundColor = 'transparent';
+    //     }
+    // });
 
     collapsebtn.addEventListener('click', function() {
         if (sidebarLeft.style.display === 'none' || sidebarLeft.style.display === '') {
             localStorage.setItem('sidebarshow', 'true');
             console.log('block');
+            icon_toogle_container.style.zIndex = '1000';
             sidebarLeft.style.display = 'block';
             // collapsebtn.style.marginLeft = '300px';
-            search_tempat.style.marginLeft = '338px';
-            information_container.style.marginLeft = '341px';
+            search_tempat.style.marginLeft = '347px';
+            information_container.style.marginLeft = '348px';
             for (let i = 0; i < floatingIcon.length; i++) {
-                floatingIcon[i].style.marginLeft = '304px';
+                floatingIcon[i].style.marginLeft = '314px';
             }
             elementOnTopLeft.style.backgroundColor = 'white';
         } else {
+            icon_toogle_container.style.zIndex = '1100';
             localStorage.setItem('sidebarshow', 'false');
             sidebarLeft.style.display = 'none';
             elementOnTopLeft.style.backgroundColor = 'transparent';
@@ -270,4 +332,11 @@
         collapsebtn.innerText = collapsebtn.innerText === 'close' ? 'menu' : 'close';
     });
     // sidebar end
+
+    function selectAll() {
+        var checkboxes = document.querySelectorAll('input[id="polaruang"]');
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = !checkbox.checked;
+        });
+    }
 </script>

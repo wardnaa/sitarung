@@ -13,5 +13,7 @@ class Kabupaten extends Model
         'id',
         'provinsi_id',
         'nama',
+        'kordinat',
+        'jsonfile',
     ];
 }

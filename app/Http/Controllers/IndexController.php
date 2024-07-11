@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Disclaimer;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
+use App\Models\PolaRuang;
 use App\Models\Provinsi;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,17 @@ class IndexController extends Controller
         $provinsi = Provinsi::where('id', 51)->orderBy('nama', 'asc')->get();
         $kabupaten = Kabupaten::where('provinsi_id', 51)->orderBy('nama', 'asc')->get();
         $kecamatan = Kecamatan::where('kabupaten_id', 5101)->orderBy('nama', 'asc')->get();
-        return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan'));
+        // Get data pola ruang with parent tree
+        $polaruang = PolaRuang::where('parent', 0)->orderBy('id', 'asc')->get();
+        $polaruang->map(function ($item) {
+            $item->children = PolaRuang::where('parent', $item->id)->orderBy('id', 'asc')->get();
+            $item->children->map(function ($child) {
+                $child->children = PolaRuang::where('parent', $child->id)->orderBy('id', 'asc')->get();
+                return $child;
+            });
+            return $item;
+        });
+        return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan', 'polaruang'));
     }
 
     public function tentang()

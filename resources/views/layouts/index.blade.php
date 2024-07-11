@@ -14,9 +14,11 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-     <!-- leaflet -->
+    <!-- leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.6.1/dist/geosearch.css">
+    <script src="https://unpkg.com/leaflet-geosearch@3.6.1/dist/geosearch.umd.js"></script>
 
     
     <!-- jquery -->
@@ -28,16 +30,14 @@
     </style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-pemprov-bali.png') }}">
 </head>
 <body>
     <div id="app">
-        <div class="bg-primary text-white" style="padding:0; height:10px">&nbsp;</div>
-        <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white shadow-sm">
+        <div class="bg-secondary text-white" style="padding:0; height:10px">&nbsp;</div>
+        {{-- <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div> --}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm">
             <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="d-flex align-items-stretch">
@@ -45,9 +45,10 @@
                         <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
                         {{-- {{ config('app.name', 'Laravel') }} --}}
                     </div>
-                    <div class="span10 align-self-center" style="margin-left: 10px">
-                        <p class="m-0 p-0" style="line-height: 1.2">Pemerintah Provinsi Bali</p>
-                        <p class="m-0 p-0" style="line-height: 1.2"><strong>Sistem Informasi Tata Ruang</strong></p>
+                    <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px;">
+                        <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum, Penataan Ruang,</strong></p>
+                        <p class="m-0 p-0" style="line-height: 1.2">Perumahan dan Kawasan Permukiman</p>
+                        <p class="m-0 p-0" style="line-height: 1.2">Provinsi Bali</p>
                     </div>
                 </div>
                 </a>
@@ -61,19 +62,22 @@
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link active" href="{{ url('/') }}">{{ __('BERANDA') }}</a>
+                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}" style="margin: 3px !important">{{ __('BERANDA') }}</a>
                         </li>
-                        <li class="nav-item separator d-none d-lg-block"></li>
+                        {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('selayang-pandang') }}">{{ __('SELAYANG PANDANG') }}</a>
+                            <a class="nav-link {{ Request::is('selayang-pandang') ? 'active' : '' }}" href="{{ url('selayang-pandang') }}" style="margin: 3px !important">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
-                        <li class="nav-item separator d-none d-lg-block"></li>
+                        {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('panduan') }}">{{ __('PANDUAN') }}</a>
+                            <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="{{ url('panduan') }}" style="margin: 3px !important">{{ __('PANDUAN') }}</a>
                         </li>
-                        <li class="nav-item separator d-none d-lg-block"></li>
+                        {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
-                            <a class="nav-link" href="{{ url('kontak') }}">{{ __('KONTAK KAMI') }}</a>
+                            <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="{{ url('kontak') }}" style="margin: 3px !important">{{ __('KONTAK KAMI') }}</a>
+                        </li>
+                        <li class="nav-item p-lg-1">
+                            <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="https://oss.go.id/" target="_blank" style="margin: 3px !important">{{ __('KKPR') }}</a>
                         </li>
                     </ul>
 
@@ -119,7 +123,7 @@
         </main>
 
         <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div>
-        <footer class="footer bg-primary text-white">
+        <footer class="footer bg-secondary text-white">
             <div class="container pt-4 pb-4">
                 <div class="row">
                     <div class="col-md-4">
@@ -138,6 +142,10 @@
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
+                        <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p>
+                        <p class="m-0 p-0">No. Telp: (0361) 222883</p>
+                        <p class="m-0 p-0">E-mail : <a class="text-warning" href="mailto:puprkim@baliprov.go.id" target="_blank" rel="noopener">puprkim@baliprov.go.id</a></p>
+                        <p class="m-0 p-0">Facebook: <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kebijakan Privasi</strong></p>

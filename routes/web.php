@@ -18,4 +18,5 @@ Route::get('/admin/kabupaten', [App\Http\Controllers\HomeController::class, 'ind
 
 Route::resource('admin/kabupaten', App\Http\Controllers\KabupatenController::class);
 Route::resource('admin/polaruang', App\Http\Controllers\PolaRuangController::class);
+Route::resource('admin/pengguna', App\Http\Controllers\PenggunaController::class);
 

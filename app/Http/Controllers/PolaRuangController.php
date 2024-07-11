@@ -93,7 +93,6 @@ class PolaRuangController extends Controller
     {
         //
     }
-<<<<<<< HEAD
 
     public function showApi(string $id)
     {
@@ -123,6 +122,4 @@ class PolaRuangController extends Controller
             ]);
         }
     }
-=======
->>>>>>> e36ca036b7f29c08623908bbdb9abb0cf01e7c63
 }

@@ -96,7 +96,6 @@ class KabupatenController extends Controller
     {
         //
     }
-<<<<<<< HEAD
 
     public function showApi(string $id)
     {
@@ -125,6 +124,4 @@ class KabupatenController extends Controller
             ], 404);
         }
     }
-=======
->>>>>>> e36ca036b7f29c08623908bbdb9abb0cf01e7c63
 }

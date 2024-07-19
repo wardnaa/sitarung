@@ -157,7 +157,8 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <hr>
+        <div class="card mt-2">
             <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
             <div class="card-body"> 
                 <!-- <div class="form-check">
@@ -166,8 +167,6 @@
                         <strong>Pilih Semua Layer</strong>
                     </label>
                 </div> -->
-
-                </div>
                 <div class="list-group mt-2">
                     <!-- Get data polaruang with tree -->
                     @foreach ($polaruang as $item)
@@ -218,6 +217,7 @@
                         @endif
                     </div>
                     @endforeach
+                </div>
                 </div>
             </div>
         </div>

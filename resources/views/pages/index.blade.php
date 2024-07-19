@@ -246,15 +246,17 @@
             const kabupatenValue = $('#kabupaten').val();
             switch (id) {
                 case '1':
-                    if (kabupatenValue == 'Pilih Kabupaten') {
+                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
                         alert('Pilih Kabupaten terlebih dahulu');
+                        item.checked = false;
                         return;
                     }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
-                    if (kabupatenValue == 'Pilih Kabupaten') {
+                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
                         alert('Pilih Kabupaten terlebih dahulu');
+                        item.checked = false;
                         return;
                     }
                     item.checked ? getKabupaten(kabupatenValue) : clearLayer();
@@ -337,15 +339,17 @@
             const id = item.value;
             switch (id) {
                 case '1':
-                    if (kabupatenValue == 'Pilih Kabupaten') {
+                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
                         alert('Pilih Kabupaten terlebih dahulu');
+                        item.checked = false;
                         return;
                     }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
-                    if (kabupatenValue == 'Pilih Kabupaten') {
+                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
                         alert('Pilih Kabupaten terlebih dahulu');
+                        item.checked = false;
                         return;
                     }
                     item.checked ? getKabupaten(kabupatenValue) : clearLayer();

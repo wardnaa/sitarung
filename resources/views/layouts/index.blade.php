@@ -37,7 +37,7 @@
     <div id="app">
         <div class="bg-secondary text-white" style="padding:0; height:10px">&nbsp;</div>
         {{-- <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div> --}}
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #F2F2F2">
             <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="d-flex align-items-stretch">

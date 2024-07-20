@@ -5,10 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
+                <div class="card-header bg-primary text-white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ __('Sistem Informasi Tata Ruang') }}
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="dropdown">
+                            <a class="text-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Download File
+                            </a>
+                            
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body m-0 p-0">
                     <div id="map" style="height: 700px"></div>
                     @include('layouts.sidebar')
+                </div>
+                <div class="card-footer bg-primary text-white p-1">
+                    <!-- Add running text here -->
+                    <marquee behavior="scroll" direction="left" scrollamount="5">
+                        <span class="text-light">Mewujudkan Ruang Wilayah yang berkualitas, aman, nyaman, produktif, berjati diri, berdaya saing, dan berkelanjutan sebagai pusat kegiatan ekonomi hijau berbasis pariwisata, pertanian, kelautan, dan industri kreatif dalam rangka menjaga keharmonisan Alam, Manusia, dan Kebudayaan Bali berlandaskan nilai-nilai kearifan lokal Sad Kerthi dan filosofi Tri Hita Karana.</span>
+                    </marquee>
                 </div>
             </div>
         </div>

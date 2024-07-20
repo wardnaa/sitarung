@@ -14,7 +14,8 @@ class PolaRuang extends Model
         'nama', 
         'deskripsi', 
         'jsonfile',
-        'header'
+        'header',
+        'category'
     ];
 
     // Get parent name from PolaRuang model

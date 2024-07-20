@@ -155,20 +155,92 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="batas-kecamatan" value="batas-kecamatan">
+                    <label class="form-check-label" for="batas-kecamatan"><strong>Batas Kecamatan</strong></label>
+                </div>
             </div>
         </div>
+        <hr />
         <div class="card">
-            <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
-            <div class="card-body"> 
+            <div class="card-header bg-third">{{ __('Rencana Struktur Ruang') }}</div>
+            <div class="card-body p-2"> 
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
                     <label class="form-check-label" for="defaultCheck1">
                         <strong>Pilih Semua Layer</strong>
                     </label>
                 </div> -->
-
+                <div class="list-group">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($struktur as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                            {{-- <div class="form-check"> --}}
+                                {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                                <label class="form-check-label" for="{{ $item->id }}">
+                                    <strong>{{ $item->nama }}</strong>
+                                </label>
+                            {{-- </div> --}}
+                        @else
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                        <label class="form-check-label" for="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </label>
+                                        <!-- Add arrow down in right -->
+                                        {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                            <div class="">
+                            @foreach ($item->children as $child)
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                            <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 align-items-stretch">
+                                        <!-- badge -->
+                                        {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                        <div class="btn-group" role="group" id="btnGroup">
+                                            <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    @endforeach
                 </div>
-                <div class="list-group mt-2">
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-primary text-light">{{ __('Rencana Pola Ruang') }}</div>
+            <div class="card-body p-2"> 
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div> -->
+                <div class="list-group">
                     <!-- Get data polaruang with tree -->
                     @foreach ($polaruang as $item)
                     <div class="list-group-item">
@@ -194,7 +266,10 @@
                                 </div>
                                 <div class="col-3 align-items-stretch">
                                     <!-- badge -->
-                                    <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span>
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-primary btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-primary btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -210,7 +285,79 @@
                                     </div>
                                     <div class="col-3 align-items-stretch">
                                         <!-- badge -->
-                                        <span class="badge rounded-pill bg-warning mt-1" style="float: right">:::</span>
+                                        {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                        <div class="btn-group" role="group" id="btnGroup">
+                                            <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-warning">{{ __('Ketentuan Khusus') }}</div>
+            <div class="card-body p-2"> 
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div> -->
+                <div class="list-group">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($ketentuan as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                            {{-- <div class="form-check"> --}}
+                                {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                                <label class="form-check-label" for="{{ $item->id }}">
+                                    <strong>{{ $item->nama }}</strong>
+                                </label>
+                            {{-- </div> --}}
+                        @else
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                        <label class="form-check-label" for="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </label>
+                                        <!-- Add arrow down in right -->
+                                        {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                            <div class="">
+                            @foreach ($item->children as $child)
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                            <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 align-items-stretch">
+                                        <!-- badge -->
+                                        {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                        <div class="btn-group" role="group" id="btnGroup">
+                                            <a class="btn btn-outline-warning btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-warning btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

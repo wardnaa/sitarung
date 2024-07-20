@@ -1,9 +1,9 @@
 $primary: #00479B; // Replace with your desired primary color
-$secondary: #b45c2a; // Replace with your desired secondary color
+$secondary: #9B1F15; // Replace with your desired secondary color
 $third: #70AD47; // Replace with your desired third color
 
 main {
-    background-color: #F2F2F2;
+    background-color: #F5F5F5;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +20,10 @@ main {
 .bg-third {
     background-color: $third !important;
     color: #FFFFFF !important;
+}
+
+.bg-grey {
+    background-color: #F2F2F2 !important;
 }
 
 .navbar-nav .separator {
@@ -102,7 +106,7 @@ span:active {
     padding: 10px;
     z-index: 1000;
     width: 320px;
-    height: 702px;
+    height: 700px;
     // overflow-y: auto;
     // overflow-x: hidden;
 }
@@ -237,6 +241,13 @@ span:active {
     display: flex;
 }
 
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
@@ -245,3 +256,6 @@ span:active {
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";

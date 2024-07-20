@@ -37,7 +37,7 @@
     <div id="app">
         <div class="bg-secondary text-white" style="padding:0; height:10px">&nbsp;</div>
         {{-- <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div> --}}
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-grey shadow-sm">
             <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 <div class="d-flex align-items-stretch">
@@ -46,8 +46,8 @@
                         {{-- {{ config('app.name', 'Laravel') }} --}}
                     </div>
                     <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px;">
-                        <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum, Penataan Ruang,</strong></p>
-                        <p class="m-0 p-0" style="line-height: 1.2">Perumahan dan Kawasan Permukiman</p>
+                        <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum</strong></p>
+                        <p class="m-0 p-0" style="line-height: 1.2">Sistem Informasi Tata Ruang</p>
                         <p class="m-0 p-0" style="line-height: 1.2">Provinsi Bali</p>
                     </div>
                 </div>

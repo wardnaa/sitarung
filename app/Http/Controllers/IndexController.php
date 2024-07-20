@@ -18,7 +18,7 @@ class IndexController extends Controller
         $kabupaten = Kabupaten::where('provinsi_id', 51)->orderBy('nama', 'asc')->get();
         $kecamatan = Kecamatan::where('kabupaten_id', 5101)->orderBy('nama', 'asc')->get();
         // Get data pola ruang with parent tree
-        $polaruang = PolaRuang::where('parent', 0)->orderBy('id', 'asc')->get();
+        $polaruang = PolaRuang::where('parent', 0)->where('category','pola-ruang')->orderBy('id', 'asc')->get();
         $polaruang->map(function ($item) {
             $item->children = PolaRuang::where('parent', $item->id)->orderBy('id', 'asc')->get();
             $item->children->map(function ($child) {
@@ -27,7 +27,28 @@ class IndexController extends Controller
             });
             return $item;
         });
-        return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan', 'polaruang'));
+
+        $struktur = PolaRuang::where('parent', 0)->where('category','struktur-ruang')->orderBy('id', 'asc')->get();
+        $struktur->map(function ($item) {
+            $item->children = PolaRuang::where('parent', $item->id)->orderBy('id', 'asc')->get();
+            $item->children->map(function ($child) {
+                $child->children = PolaRuang::where('parent', $child->id)->orderBy('id', 'asc')->get();
+                return $child;
+            });
+            return $item;
+        });
+
+        $ketentuan = PolaRuang::where('parent', 0)->where('category','ketentuan-khusus')->orderBy('id', 'asc')->get();
+        $ketentuan->map(function ($item) {
+            $item->children = PolaRuang::where('parent', $item->id)->orderBy('id', 'asc')->get();
+            $item->children->map(function ($child) {
+                $child->children = PolaRuang::where('parent', $child->id)->orderBy('id', 'asc')->get();
+                return $child;
+            });
+            return $item;
+        });
+
+        return view('pages.index', compact('disclaimer', 'provinsi', 'kabupaten', 'kecamatan', 'polaruang', 'struktur', 'ketentuan'));
     }
 
     public function tentang()

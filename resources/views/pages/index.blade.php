@@ -5,10 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">{{ __('Sistem Informasi Tata Ruang') }}</div>
+                <div class="card-header bg-primary text-white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ __('Sistem Informasi Tata Ruang') }}
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="dropdown">
+                                <a class="text-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Download File
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body m-0 p-0">
                     <div id="map" style="height: 700px"></div>
                     @include('layouts.sidebar')
+                </div>
+                <div class="card-footer bg-primary text-white p-1">
+                    <!-- Add running text here -->
+                    <marquee behavior="scroll" direction="left" scrollamount="5">
+                        <span class="text-light">Mewujudkan Ruang Wilayah yang berkualitas, aman, nyaman, produktif, berjati diri, berdaya saing, dan berkelanjutan sebagai pusat kegiatan ekonomi hijau berbasis pariwisata, pertanian, kelautan, dan industri kreatif dalam rangka menjaga keharmonisan Alam, Manusia, dan Kebudayaan Bali berlandaskan nilai-nilai kearifan lokal Sad Kerthi dan filosofi Tri Hita Karana.</span>
+                    </marquee>
                 </div>
             </div>
         </div>
@@ -19,32 +44,32 @@
 <div class="modal fade" id="disclaimer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="disclaimerLabel">{{ $disclaimer->judul }}</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            {!! $disclaimer->konten !!}
-        </div>
-        <div class="modal-footer">
-            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="setuju">Saya Setuju</button>
-        </div>
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="disclaimerLabel">{{ $disclaimer->judul }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {!! $disclaimer->konten !!}
+            </div>
+            <div class="modal-footer">
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="setuju">Saya Setuju</button>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title text-primary" id="feature-title"></h4>
-        </div>
-        <div class="modal-body" id="feature-info"></div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div><!-- /.modal-content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-primary" id="feature-title"></h4>
+            </div>
+            <div class="modal-body" id="feature-info"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
@@ -98,7 +123,9 @@
     cariTempatContainer.addEventListener('input', function(e) {
         document.getElementById('search_icon').innerHTML = "close"
         searchResultContainer.innerHTML = '';
-        provider.search({ query: e.target.value })
+        provider.search({
+                query: e.target.value
+            })
             .then(function(results) {
                 console.log(results);
                 for (const result of results) {
@@ -149,15 +176,16 @@
 
 
     openstreetmap();
+
     function openstreetmap() {
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">'
-                + 'OpenStreetMap</a> contributors'
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">' +
+                'OpenStreetMap</a> contributors'
         }).addTo(map);
     }
 
-    function bingmap(){
+    function bingmap() {
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         }).addTo(map);
@@ -190,16 +218,43 @@
     const mapOption = $('input[name="inlineRadioOptions"]');
     const perairan = $('input[id="perairan"]');
     const daratan = $('input[id="daratan"]');
+    const batasKecamatan = $('input[id="batas-kecamatan"]');
+
     const allKabupaten = $("#kabupaten")
 
-    daratan.change(function () {
+    allKabupaten.change(function() {
+        const kabupatenValue = allKabupaten.val();
+        if (kabupatenValue != 'Pilih Kabupaten') {
+            batasKecamatan.is(':checked') ? getKabupaten(kabupatenValue) : clearLayer();
+        }
+    });
+
+    batasKecamatan.change(function() {
+        const ischecked = $(this).is(':checked');
+        if (ischecked) {
+            if (allKabupaten.val() == 'Pilih Kabupaten') {
+                for (let i = 0; i < allKabupaten[0].length; i++) {
+                    const kabupatenValue = allKabupaten[0][i].value;
+                    if (kabupatenValue != 'Pilih Kabupaten') {
+                        getKabupaten(kabupatenValue, i);
+                    }
+                }
+            } else {
+                getKabupaten(allKabupaten.val());
+            }
+        } else {
+            clearLayer();
+        }
+    });
+
+    daratan.change(function() {
         const ischecked = $(this).is(':checked');
 
         if (ischecked) {
             for (let i = 0; i < allKabupaten[0].length; i++) {
                 const kabupatenValue = allKabupaten[0][i].value;
                 if (kabupatenValue != 'Pilih Kabupaten') {
-                    getKabupatenPolaRuang(kabupatenValue);
+                    getKabupatenPolaRuang(kabupatenValue, i);
                 }
             }
         } else {
@@ -212,10 +267,10 @@
         daratan.prop('checked', false);
     }
 
-    perairan.change(function () {
+    perairan.change(function() {
         const ischecked = $(this).is(':checked');
         if (ischecked) {
-            loadJsonPolaRuang('perairan.geojson');
+            loadJsonPolaRuang('perairan.geojson', 0, 'perairan');
         } else {
             clearLayer('rpr_air');
         }
@@ -240,12 +295,28 @@
 
 <script>
     const pola = document.querySelectorAll('#polaruang');
+    const legendaButton = document.querySelectorAll('a[href="#legend82"]');
+    legendaButton.forEach(function(item) {
+        item.addEventListener('click', function() {
+            const id = item.getAttribute('menu-name');
+            console.log({
+                id,
+            });
+            focusLegenda(id);
+        });
+    });
+
     pola.forEach(function(item) {
         item.addEventListener('click', function() {
             const id = item.value;
+            const menuName = item.nextElementSibling.innerText
             const kabupatenValue = $('#kabupaten').val();
-            switch (id) {
-                case '1':
+            console.log({
+                id,
+                text: item.nextElementSibling.innerText,
+            });
+            switch (menuName.toLowerCase()) {
+                case 'rencana pola ruang':
                     if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
                         alert('Pilih Kabupaten terlebih dahulu');
                         item.checked = false;
@@ -261,70 +332,70 @@
                     }
                     item.checked ? getKabupaten(kabupatenValue) : clearLayer();
                     break;
-                case '4':
+                case 'ketentuan khusus kkop':
                     item.checked ? loadJsonKkop('kkop.geojson') : clearLayer('kkop');
                     break;
-                case '5':
+                case 'ketentuan khusus kp2b':
                     item.checked ? loadJsonKp2b('kp2b.geojson') : clearLayer('kp2b');
                     break;
-                case '6':
+                case 'ketentuan khusus bencana':
                     item.checked ? loadJsonKrb('krb.geojson') : clearLayer('krb');
                     break;
-                case '7':
+                case 'ketentuan khusus cagar budaya':
                     item.checked ? loadJsonCagarBudaya('cagbud.geojson') : clearLayer('cagbud');
                     break;
-                case '8':
+                case 'ketentuan khusus resapan air':
                     item.checked ? loadJsonResapanAir('resair.geojson') : clearLayer('resair');
                     break;
-                case '9':
+                case 'ketentuan khusus sempadan':
                     item.checked ? loadJsonSempadan('ksmpdn.geojson') : clearLayer('ksmpdn');
                     break;
-                case '10':
+                case 'ketentuan khusus hankam':
                     item.checked ? loadJsonHankam('hankam.geojson') : clearLayer('hankam');
                     break;
-                case '11':
+                case 'ketentuan khusus karst':
                     item.checked ? loadJsonKarst('kkarst.geojson') : clearLayer('kkarst');
                     break;
-                case '12':
+                case 'ketentuan khusus pertambangan':
                     item.checked ? loadJsonPertambangan('ptbgmb.geojson') : clearLayer('ptbgmb');
                     break;
-                case '13':
+                case 'ketentuan khusus migrasi satwa':
                     item.checked ? loadJsonMigrasiSatwa('mgrsat.geojson') : clearLayer('mgrsat');
                     break;
-                case '14':
+                case 'ketentuan khusus dlkp':
                     item.checked ? loadJsonDklp('dlkpel.geojson') : clearLayer('dlkpel');
                     break;
-                case '15':
+                case 'sistem pusat permukiman':
                     item.checked ? loadJsonPemukiman('pusat_permukiman.geojson') : clearLayer('pusat_permukiman');
                     break;
-                case '17':
+                case 'jaringan transportasi':
                     item.checked ? loadJsonJaringanTransportasi('transport_ln.geojson') : clearLayer('transport_ln');
                     break;
-                case '18':
+                case 'infrastruktur transportasi':
                     item.checked ? loadJsonJaringanTerminal('transport_pt.geojson') : clearLayer('transport_pt');
                     break;
-                case '20':
+                case 'jaringan energi':
                     item.checked ? loadJsonJaringanEnergi('energi_ln.geojson') : clearLayer('energi_ln');
                     break;
-                case '21':
+                case 'infrastruktur energi':
                     item.checked ? loadJsonInfraEnergi('energi_pt.geojson') : clearLayer('energi_pt');
                     break;
-                case '23':
+                case 'jaringan tetap':
                     item.checked ? loadJsonJaringanTetap('telkom_ln.geojson') : clearLayer('telkom_ln');
                     break;
-                case '24':
+                case 'infrastruktur jaringan tetap':
                     item.checked ? loadJsonInfraTetap('telkom_pt.geojson') : clearLayer('telkom_pt');
                     break;
-                case '26':
-                    item.checked ? loadJsonSumberDayaAir('sda_ln.geojson') : clearLayer('sda_ln');
+                case 'jaringan sumber daya air':
+                    item.checked ? loadJsonSumberDayaAir1('sda_ln.geojson') : clearLayer('sda_ln');
                     break;
-                case '27':
+                case 'infrastruktur sumber daya air':
                     item.checked ? loadJsonSumberDayaAir('sda_pt.geojson') : clearLayer('sda_pt');
                     break;
-                case '29':
+                case 'jaringan prasarana lainnya':
                     item.checked ? loadJsonJaringanPrasarana('lainnya_ln.geojson') : clearLayer('lainnya_ln');
                     break;
-                case '30':
+                case 'infrastruktur prasarana lainnya':
                     item.checked ? loadJsonInfraPrasarana('lainnya_pt.geojson') : clearLayer('lainnya_pt');
                 default:
                     break;

@@ -52,6 +52,7 @@ class PolaRuangController extends Controller
                 'nama' => $data->nama,
                 'parent' => @$data->parentname->nama ?? '-',
                 'jsonfile' => $data->jsonfile,
+                'category' => $data->category,
                 'created_at' => $data->created_at->format('d-m-Y H:i:s'),
                 'updated_at' => $updated_at,
             ];
@@ -65,7 +66,8 @@ class PolaRuangController extends Controller
     public function edit(string $id)
     {
         $polaruang = PolaRuang::find($id);
-        return view('admin.polaruang.edit', compact('polaruang'));
+        $parents = PolaRuang::where('parent', 0)->get();
+        return view('admin.polaruang.edit', compact('polaruang', 'parents'));
     }
 
     /**
@@ -76,6 +78,7 @@ class PolaRuangController extends Controller
         $update = PolaRuang::find($id);
         $update->nama = $request->nama;
         $update->parent = $request->parent;
+        $update->category = $request->category;
         if ($request->hasFile('jsonfile')) {
             $file = $request->file('jsonfile');
             $filename = $file->getClientOriginalName();
@@ -110,6 +113,7 @@ class PolaRuangController extends Controller
                 'nama' => $data->nama,
                 'parent' => @$data->parentname->nama ?? '-',
                 'jsonfile' => $data->jsonfile,
+                'category' => $data->category,
                 'created_at' => $data->created_at->format('d-m-Y H:i:s'),
                 'updated_at' => $updated_at,
             ];

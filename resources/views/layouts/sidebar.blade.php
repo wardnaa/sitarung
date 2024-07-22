@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#kabupaten').change(function() {
             var kabupatenId = $(this).val();
             $('#kecamatan').empty();
@@ -64,8 +64,8 @@
 </div> -->
 
 <div class="icon-toggle-container">
-    <span class="material-symbols-outlined sidebar_toggle floating-icon" id="collapsebtn" >Menu</span> 
-    <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapin" style="margin-top: 40px">Add</span> 
+    <span class="material-symbols-outlined sidebar_toggle floating-icon" id="collapsebtn">Menu</span>
+    <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapin" style="margin-top: 40px">Add</span>
     <span class="material-symbols-outlined sidebar_toggle floating-icon" id="mapout" style="margin-top: 73px">remove</span>
     <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 110px" id="search_toggle">search</span>
     <div class="searchbar_sidebar_container" id="search_tempat_container" style="display: none;">
@@ -79,34 +79,43 @@
         <h3 style="font-size: 14px">Detail Legenda</h3>
 
         <div style="margin-left: 12px;">
-            <img src="img/rpr.png" width="260">
+            <b>Rencara Pola Ruang</b>
+            <img src="img/rpr.png" width="260" id="legenda_rencana_pola_ruang">
             <br>
             <br>
-            <img src="img/permukiman.png" width="160" style="margin-left: 10px">
+            <b>Sistem Pusat Permukiman</b>
+            <img src="img/permukiman.png" width="160" style="margin-left: 10px" id="legenda_sistem_pusat_permukiman">
             <br>
             <br>
-            <img src="img/arteri.png" width="260">
+            <b>Sistem Jaringan Transportasi</b>
+            <img src="img/arteri.png" width="260" id="legenda_jaringan_transportasi">
             <br>
             <br>
-            <img src="img/transport_pt.png" width="210">
+            <b>Infrastruktur Transportasi</b>
+            <img src="img/transport_pt.png" width="210" id="legenda_infrastruktur_transportasi">
             <br>
             <br>
-            <img src="img/energi_ln.png" width="260">
+            <b>Sistem Jaringan Energi</b>
+            <img src="img/energi_ln.png" width="260" id="legenda_jaringan_energi">
             <br>
             <br>
-            <img src="img/energi_pt.png" width="260">
+            <b>Infrastruktur Energi</b>
+            <img src="img/energi_pt.png" width="260" id="legenda_infrastruktur_energi">
             <br>
             <br>
-            <img src="img/sda_ln.png" width="200">
+            <b>Sistem Jaringan Telekomunikasi</b>
+            <img src="img/sda_ln.png" width="200" id="legenda_jaringan_tetap">
             <br>
             <br>
-            <img src="img/sda_pt.png" width="200">
+            <b>Sistem Jaringan Sumber Daya Air</b>
+            <img src="img/sda_pt.png" width="200" id="legenda_jaringan_sumber_daya_air">
             <br>
             <br>
-            <img src="img/lainnya_ln.png" width="230">
+            <b>Sistem Jaringan Prasarana Lainnya</b>
+            <img src="img/lainnya_ln.png" width="230" id="legenda_infrastruktur_prasarana_lainnya">
             <br>
             <br>
-            <img src="img/lainnya_pt.png" width="230">
+            <img src="img/lainnya_pt.png" width="230" id="legenda_infrastruktur_prasarana_lainnya">
         </div>
     </div>
     <!-- icon toggle -->
@@ -147,81 +156,242 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="label-group"><b>Opacity : </b></label>
+                    <input class="form-range" id="opacity-global" type="range" class="form-range" min="0" max="1" step="0.1" value="1" />
+                </div>
+
+                <div class="form-group">
                     <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
                     <select class="form-select" aria-label="Default select example" id="kabupaten">
                         <option selected>Pilih Kabupaten</option>
                         @foreach ($kabupaten as $item)
-                            <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                        <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
                         @endforeach
                     </select>
                 </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="batas-kecamatan" value="batas-kecamatan">
+                    <label class="form-check-label" for="batas-kecamatan"><strong>Batas Kecamatan</strong></label>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="card mt-2">
-            <div class="card-header bg-third">{{ __('Rencana Pola Ruang') }}</div>
-            <div class="card-body"> 
+        <hr />
+        <div class="card">
+            <div class="card-header bg-third">{{ __('Rencana Struktur Ruang') }}</div>
+            <div class="card-body p-2">
                 <!-- <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
                     <label class="form-check-label" for="defaultCheck1">
                         <strong>Pilih Semua Layer</strong>
                     </label>
                 </div> -->
-                <div class="list-group mt-2">
+                <div class="list-group">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($struktur as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                        {{-- <div class="form-check"> --}}
+                        {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                        <label class="form-check-label" for="{{ $item->id }}">
+                            <strong>{{ $item->nama }}</strong>
+                        </label>
+                        {{-- </div> --}}
+                        @else
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                    <label class="form-check-label" for="{{ $item->id }}">
+                                        {{ $item->nama }}
+                                    </label>
+                                    <!-- Add arrow down in right -->
+                                    {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                </div>
+                            </div>
+                            <div class="col-3 align-items-stretch">
+                                <!-- badge -->
+                                {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                <div class="btn-group" role="group" id="btnGroup">
+                                    <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" menu-name="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                        <div class="">
+                            @foreach ($item->children as $child)
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                        <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        <input class="form-range" id="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" onchange="setAndSaveOpacity(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" type="range" min="0" max="1" step="0.1" value="1" style="display: none" />
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" menu-name="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a>
+                                        <a onclick="showOpacitySetting(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-primary text-light">{{ __('Rencana Pola Ruang') }}</div>
+            <div class="card-body p-2">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div> -->
+                <div class="list-group">
                     <!-- Get data polaruang with tree -->
                     @foreach ($polaruang as $item)
                     <div class="list-group-item">
                         <!-- Check if header = 1 then hide checkbox -->
                         @if ($item->header == 1)
-                            {{-- <div class="form-check"> --}}
-                                {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
-                                <label class="form-check-label" for="{{ $item->id }}">
-                                    <strong>{{ $item->nama }}</strong>
-                                </label>
-                            {{-- </div> --}}
+                        {{-- <div class="form-check"> --}}
+                        {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                        <label class="form-check-label" for="{{ $item->id }}">
+                            <strong>{{ $item->nama }}</strong>
+                        </label>
+                        {{-- </div> --}}
                         @else
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                    <label class="form-check-label" for="{{ $item->id }}">
+                                        {{ $item->nama }}
+                                    </label>
+                                    <input class="form-range" id="opacity_{{ str_replace(' ', '_', strtolower($item->nama)) }}" onchange="setAndSaveOpacity(`{{ str_replace(' ', '_', strtolower($item->nama)) }}`)" type="range" min="0" max="1" step="0.1" value="1" style="display: none" />
+                                    <!-- Add arrow down in right -->
+                                    {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                </div>
+                            </div>
+                            <div class="col-3 align-items-stretch">
+                                <!-- badge -->
+                                {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                <div class="btn-group" role="group" id="btnGroup">
+                                    <a class="btn btn-outline-primary btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" menu-name="opacity_{{ str_replace(' ', '_', strtolower($item->nama)) }}" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a>
+                                    <a onclick="showOpacitySetting(`{{ str_replace(' ', '_', strtolower($item->nama)) }}`)" class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                        <div class="">
+                            @foreach ($item->children as $child)
                             <div class="row">
                                 <div class="col-9">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
-                                        <label class="form-check-label" for="{{ $item->id }}">
-                                            {{ $item->nama }}
-                                        </label>
-                                        <!-- Add arrow down in right -->
-                                        {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                        <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        <input class="form-range" id="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" onchange="setAndSaveOpacity(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" type="range" min="0" max="1" step="0.1" value="1" style="display: none" />
                                     </div>
                                 </div>
                                 <div class="col-3 align-items-stretch">
                                     <!-- badge -->
-                                    <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span>
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" menu-name="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a>
+                                        <a onclick="showOpacitySetting(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        @endif
-                        @if (count($item->children) > 0)
-                            <div class="">
-                            @foreach ($item->children as $child)
-                                <div class="row">
-                                    <div class="col-9">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
-                                            <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 align-items-stretch">
-                                        <!-- badge -->
-                                        <span class="badge rounded-pill bg-warning mt-1" style="float: right">:::</span>
-                                    </div>
-                                </div>
                             @endforeach
-                            </div>
+                        </div>
                         @endif
                     </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        <hr />
+        <div class="card">
+            <div class="card-header bg-warning">{{ __('Ketentuan Khusus') }}</div>
+            <div class="card-body p-2">
+                <!-- <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="selectAll()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <strong>Pilih Semua Layer</strong>
+                    </label>
+                </div> -->
+                <div class="list-group">
+                    <!-- Get data polaruang with tree -->
+                    @foreach ($ketentuan as $item)
+                    <div class="list-group-item">
+                        <!-- Check if header = 1 then hide checkbox -->
+                        @if ($item->header == 1)
+                        {{-- <div class="form-check"> --}}
+                        {{-- <input class="form-check-input" type="checkbox" value="" id="{{ $item->id }}"> --}}
+                        <label class="form-check-label" for="{{ $item->id }}">
+                            <strong>{{ $item->nama }}</strong>
+                        </label>
+                        {{-- </div> --}}
+                        @else
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="polaruang" value="{{ $item->id }}">
+                                    <label class="form-check-label" for="{{ $item->id }}">
+                                        {{ $item->nama }}
+                                    </label>
+                                    <!-- Add arrow down in right -->
+                                    {{-- <span class="material-symbols-outlined mt-1" style="font-size: 20px; float: right">expand_more</span> --}}
+                                </div>
+                            </div>
+                            <div class="col-3 align-items-stretch">
+                                <!-- badge -->
+                                {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                <div class="btn-group" role="group" id="btnGroup">
+                                    <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" menu-name="opacity_{{ str_replace(' ', '_', strtolower($item->nama)) }}" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @if (count($item->children) > 0)
+                        <div class="">
+                            @foreach ($item->children as $child)
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input me-1" type="checkbox" id="polaruang" value="{{ $child->id }}" id="{{ $child->id }}">
+                                        <label class="form-check-label" for="{{ $child->id }}">{{ $child->nama }}</label>
+                                        <input class="form-range" id="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" onchange="setAndSaveOpacity(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" type="range" min="0" max="1" step="0.1" value="1" style="display: none" />
+                                    </div>
+                                </div>
+                                <div class="col-3 align-items-stretch">
+                                    <!-- badge -->
+                                    {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
+                                    <div class="btn-group" role="group" id="btnGroup">
+                                        <a class="btn btn-outline-warning btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" href="#legend82" menu-name="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a>
+                                        <a onclick="showOpacitySetting(`{{ str_replace(' ', '_', strtolower($child->nama)) }}`)" class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -239,7 +409,35 @@
     var information_toggle = document.getElementById('information_toggle');
     var information_container = document.querySelector('.information_container');
     var icon_toogle_container = document.querySelector('.icon-toggle-container');
+    var opacityGlobal = document.getElementById('opacity-global');
     localStorage.setItem('sidebarshow', 'false');
+
+    opacityGlobal.addEventListener('change', function(e) {
+        let opacity = e.target.value;
+        if (e.target.value > 0.8) {
+            opacity = 0.8;
+        }
+        for (let i = 1; i <= 9; i++) {
+
+            if (window[`layer_rencana_pola_ruang_${i}`]) {
+                window[`layer_rencana_pola_ruang_${i}`].setStyle({
+                    fillOpacity: opacity
+                });
+            }
+
+            if (window[`layer_perbatasan_${i}`]) {
+                window[`layer_perbatasan_${i}`].setStyle({
+                    opacity: opacity
+                });
+            }
+        }
+
+        if (window[`layer_rencana_pola_ruang_perairan`]) {
+            window[`layer_rencana_pola_ruang_perairan`].setStyle({
+                fillOpacity: opacity
+            });
+        }
+    });
 
 
     information_toggle.addEventListener('click', function() {
@@ -279,31 +477,6 @@
     });
 
 
-    // btnclosekoordinat.addEventListener('click', function() {
-    //     koordinatPanel.style.display = 'none';
-    //     btnkoordinat.style.display = 'flex';
-    //     sidebarRight.style.display = 'none';
-    //     elementOnTopRight.style.top = '40px';
-    //     elementOnTopRight.style.backgroundColor = 'transparent';
-    //     localStorage.setItem('sidebarshow', 'false');
-    // });
-
-
-    // btnkoordinat.addEventListener('click', function() {
-    //     btnkoordinat.style.display = 'none';
-    //     if (sidebarRight.style.display === 'none' || sidebarRight.style.display === '') {
-    //         sidebarRight.style.display = 'block';
-    //         koordinatPanel.style.display = 'block';
-    //         elementOnTopRight.style.top = '77px';
-    //         elementOnTopRight.style.backgroundColor = 'white';
-    //     } else {
-    //         sidebarRight.style.display = 'none';
-    //         koordinatPanel.style.display = 'none';
-    //         elementOnTopRight.style.top = '40px';
-    //         elementOnTopRight.style.backgroundColor = 'transparent';
-    //     }
-    // });
-
     collapsebtn.addEventListener('click', function() {
         if (sidebarLeft.style.display === 'none' || sidebarLeft.style.display === '') {
             localStorage.setItem('sidebarshow', 'true');
@@ -338,6 +511,92 @@
         var checkboxes = document.querySelectorAll('input[id="polaruang"]');
         checkboxes.forEach((checkbox) => {
             checkbox.checked = !checkbox.checked;
+        });
+    }
+
+    function focusLegenda(elementId) {
+        elementId = elementId.replace('opacity', 'legenda')
+        var element = document.getElementById(elementId);
+        var legendaToggle = document.getElementById('information_toggle');
+
+        if (legendaToggle.innerText === 'expand_content') {
+            legendaToggle.click();
+        }
+        if (element) {
+            // Gulir ke elemen menggunakan smooth behavior
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'start'
+            });
+
+            element.classList.add('blinking-border');
+            // Hapus kelas setelah 2 detik
+            setTimeout(function() {
+                element.classList.remove('blinking-border');
+            }, 5000);
+        }
+    }
+
+    function showOpacitySetting(name) {
+        var x = document.getElementById(`opacity_${name}`);
+        console.log(`opacity_${name}`);
+        console.log(`layer_${name}`);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function setAndSaveOpacity(name) {
+        var x = document.getElementById(`opacity_${name}`);
+        console.log(`layer_${name}`);
+        var opacity = x.value;
+        console.log(opacity);
+        window[`opacity_${name}`] = opacity;
+        const filllist = ['kp2b',
+            'kkop',
+            'pola',
+            'bencana',
+            'budaya',
+            'air',
+            'sempadan',
+            'hankam',
+            'karst',
+            'pertambangan',
+            'satwa',
+            'dlkp'
+        ];
+        if (filllist.filter((item) => name.includes(item)).length > 0) {
+            console.log('fill');
+
+            if (name.includes('kkop') ||
+                name.includes('kp2b') ||
+                name.includes('bencana') ||
+                name.includes('budaya') ||
+                name.includes('air') ||
+                name.includes('sempadan') ||
+                name.includes('hankam') ||
+                name.includes('karst') ||
+                name.includes('pertambangan') ||
+                name.includes('satwa') ||
+                name.includes('dlkp')) {
+                if (opacity > 0.5) {
+                    opacity = 0.5;
+                }
+            } else if (name.includes('pola')) {
+                if (opacity > 0.8) {
+                    opacity = 0.8;
+                }
+            }
+            window[`layer_${name}`].setStyle({
+                fillOpacity: opacity
+            });
+            return;
+        }
+        window[`layer_${name}`].setStyle({
+            opacity: opacity
         });
     }
 </script>

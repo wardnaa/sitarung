@@ -25,6 +25,10 @@
     <!-- DataTables JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
+    <!-- Text Editor -->
+    {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    <script src="https://cdn.tiny.cloud/1/aauve4905iimf7qqzqkwizyzt06vs05husk8b7up2vkeigmf/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>

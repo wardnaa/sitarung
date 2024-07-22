@@ -35,7 +35,7 @@
 </head>
 <body>
     <div id="app">
-        <div class="bg-secondary text-white" style="padding:0; height:10px">&nbsp;</div>
+        <div class="bg-third text-white" style="padding:0; height:5px">&nbsp;</div>
         {{-- <div class="bg-warning text-white" style="padding:0; height:5px">&nbsp;</div> --}}
         <nav class="navbar navbar-expand-lg navbar-light bg-grey shadow-sm">
             <div class="container pt-1 pb-1">
@@ -69,9 +69,9 @@
                             <a class="nav-link {{ Request::is('selayang-pandang') ? 'active' : '' }}" href="{{ url('selayang-pandang') }}" style="margin: 3px !important">{{ __('SELAYANG PANDANG') }}</a>
                         </li>
                         {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
-                        <li class="nav-item p-lg-1">
+                        {{-- <li class="nav-item p-lg-1">
                             <a class="nav-link {{ Request::is('panduan') ? 'active' : '' }}" href="{{ url('panduan') }}" style="margin: 3px !important">{{ __('PANDUAN') }}</a>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item separator d-none d-lg-block"></li> --}}
                         <li class="nav-item p-lg-1">
                             <a class="nav-link {{ Request::is('kontak') ? 'active' : '' }}" href="{{ url('kontak') }}" style="margin: 3px !important">{{ __('KONTAK KAMI') }}</a>
@@ -149,6 +149,8 @@
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kebijakan Privasi</strong></p>
+                        <hr class="bg-white" />
+                        <P><strong>Total Pengunjung :</strong> {{ $visitorCount }}</P>
                     </div>
                 </div>
             </div>

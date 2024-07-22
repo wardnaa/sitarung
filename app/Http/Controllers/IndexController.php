@@ -7,10 +7,18 @@ use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use App\Models\PolaRuang;
 use App\Models\Provinsi;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    // Make function __construct visitor count
+    public function __construct()
+    {
+        $visitorCount = Visitor::count();
+        view()->share('visitorCount', $visitorCount);
+    }
+    
     public function index()
     {
         $disclaimer = Disclaimer::where('status', 1)->first();

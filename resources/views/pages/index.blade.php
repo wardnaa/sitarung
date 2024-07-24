@@ -91,7 +91,6 @@
 
 <script type="text/javascript">
     var map = L.map('map').setView([-8.47237, 114.89502], 10);
-
     var highlight = L.geoJson(null);
     var highlightStyle = {
         stroke: false,

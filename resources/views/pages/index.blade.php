@@ -7,10 +7,10 @@
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-7">
                             {{ __('Sistem Informasi Tata Ruang') }}
                         </div>
-                        <div class="col-md-6 text-end">
+                        <div class="col-5 text-end">
                             <div class="dropdown">
                                 <a class="text-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Download File

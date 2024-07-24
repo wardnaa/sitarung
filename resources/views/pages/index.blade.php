@@ -15,9 +15,8 @@
                                 <a class="text-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Download File
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index: 1100">
                                     <!-- add link download here pdf folder-->
-                                    <li
                                     <li><a class="dropdown-item" href="{{ url('pdf/Perda RTRW Kabupaten Serang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Perda RTRW Provinsi Bali</a></li>
                                     <li><a class="dropdown-item" href="{{ url('pdf/Rencana Pola Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Pola Ruang</a></li>
                                     <li><a class="dropdown-item" href="{{ url('pdf/Rencana Struktur Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Struktur Ruang</a></li>
@@ -91,7 +90,8 @@
 </script>
 
 <script type="text/javascript">
-    var map = L.map('map').setView([-8.398190, 115.188038], 10);
+    var map = L.map('map').setView([-8.47237, 114.89502], 10);
+
     var highlight = L.geoJson(null);
     var highlightStyle = {
         stroke: false,
@@ -99,6 +99,66 @@
         fillOpacity: 0.7,
         radius: 10
     };
+
+
+    L.control.locate({
+        position: 'topright',
+        drawCircle: true, // controls whether a circle is drawn that shows the uncertainty about the location
+        follow: true, // follow the user's location
+        setView: true, // automatically sets the map view to the user's location, enabled if follow is true
+        keepCurrentZoomLevel: false, // keep the current map zoom level when displaying the user's location
+        markerStyle: {
+            weight: 1,
+            opacity: 0.8,
+            fillOpacity: 0.8
+        },
+        circleStyle: {
+            weight: 1,
+            clickable: false
+        },
+        icon: 'fa fa-location-arrow', // class for icon, fa-location-arrow or fa-map-marker
+        metric: true, // use metric or imperial units
+        onLocationError: function(err) {
+            alert(err.message)
+        }, // define an error callback function
+        onLocationOutsideMapBounds: function(context) { // called when outside map boundaries
+            alert(context.options.strings.outsideMapBoundsMsg);
+        },
+        strings: {
+            title: "Tunjukan lokasi saya", // title of the locate control
+            popup: "Lokasimu saat ini", // text to appear if user clicks on circle
+            outsideMapBoundsMsg: "Lokasimu berada diluar map" // default message for onLocationOutsideMapBounds
+        },
+        locateOptions: {
+            maxZoom: 20
+        } // define location options e.g enableHighAccuracy: true or maxZoom: 10
+    }).addTo(map);
+
+    L.Control.Measure.include({
+        // set icon on the capture marker
+        _setCaptureMarkerIcon: function() {
+            // disable autopan
+            this._captureMarker.options.autoPanOnFocus = false;
+
+            // default function
+            this._captureMarker.setIcon(
+                L.divIcon({
+                    iconSize: this._map.getSize().multiplyBy(2)
+                })
+            );
+        },
+    });
+
+    var measure = L.control.measure({
+        position: 'topright',
+        primaryLengthUnit: 'meters',
+        secondaryLengthUnit: 'kilometers',
+        primaryAreaUnit: 'hectares',
+        secondaryAreaUnit: 'sqmeters',
+        activeColor: 'green',
+        completedColor: 'blue'
+    }).addTo(map);
+
 
     const provider = new GeoSearch.OpenStreetMapProvider({
         params: {
@@ -136,7 +196,7 @@
                     div.innerHTML = result.label;
                     div.addEventListener('click', function() {
                         map.setView([result.y, result.x], 18);
-                        setMarker(result.y, result.x, result.label);
+                        setMarkerni(result.y, result.x, result.label);
                         searchResultContainer.innerHTML = '';
                         cariTempatContainer.value = result.label;
                     });
@@ -146,7 +206,7 @@
             });
     });
 
-    function setMarker(lat, lng, name) {
+    function setMarkerni(lat, lng, name) {
         document.getElementById('search_icon').innerHTML = "close";
         L.marker([lat, lng]).addTo(map)
             .bindPopup(name)
@@ -156,6 +216,14 @@
     function removeMarker() {
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+    }
+
+    function removeCircle() {
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Circle) {
                 map.removeLayer(layer);
             }
         });

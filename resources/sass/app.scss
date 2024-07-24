@@ -67,6 +67,16 @@ span:active {
     /* Mendorong elemen sedikit ke bawah saat ditekan */
 }
 
+.floating-icon {
+    box-shadow: none;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
 .icon-toggle-container {
     position: absolute;
     top: 36px;

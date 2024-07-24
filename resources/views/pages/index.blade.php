@@ -7,19 +7,21 @@
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-7">
                             {{ __('Sistem Informasi Tata Ruang') }}
                         </div>
-                        <div class="col-md-6 text-end">
+                        <div class="col-5 text-end">
                             <div class="dropdown">
                                 <a class="text-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Download File
                                 </a>
-
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <!-- add link download here pdf folder-->
+                                    <li
+                                    <li><a class="dropdown-item" href="{{ url('pdf/Perda RTRW Kabupaten Serang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Perda RTRW Provinsi Bali</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pdf/Rencana Pola Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Pola Ruang</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pdf/Rencana Struktur Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Struktur Ruang</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pdf/Kawasan Strategis.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Kawasan Strategis</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -29,9 +31,9 @@
                     <div id="map" style="height: 700px"></div>
                     @include('layouts.sidebar')
                 </div>
-                <div class="card-footer bg-primary text-white p-1">
+                <div class="card-footer bg-primary text-white p-1 center">
                     <!-- Add running text here -->
-                    <marquee behavior="scroll" direction="left" scrollamount="5">
+                    <marquee behavior="scroll" direction="left" scrollamount="5" class="mt-1">
                         <span class="text-light">Mewujudkan Ruang Wilayah yang berkualitas, aman, nyaman, produktif, berjati diri, berdaya saing, dan berkelanjutan sebagai pusat kegiatan ekonomi hijau berbasis pariwisata, pertanian, kelautan, dan industri kreatif dalam rangka menjaga keharmonisan Alam, Manusia, dan Kebudayaan Bali berlandaskan nilai-nilai kearifan lokal Sad Kerthi dan filosofi Tri Hita Karana.</span>
                     </marquee>
                 </div>

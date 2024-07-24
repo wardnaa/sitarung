@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disclaimer;
 use Illuminate\Http\Request;
 
 class DisclaimerController extends Controller
@@ -11,7 +12,8 @@ class DisclaimerController extends Controller
      */
     public function index()
     {
-        //
+        $disclaimer = Disclaimer::where('status', 1)->first();
+        return view('admin.disclaimer.index', compact('disclaimer'));
     }
 
     /**
@@ -51,7 +53,9 @@ class DisclaimerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $update = Disclaimer::find($id);
+        $update->update($request->all());
+        return back()->with('success', 'Data berhasil diubah');
     }
 
     /**

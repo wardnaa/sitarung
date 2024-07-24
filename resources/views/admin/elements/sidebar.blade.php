@@ -18,9 +18,9 @@
             <a href="{{ url('admin/disclaimer') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/disclaimer') ? 'active' : '' }}">
                 <span>Disclaimer</span>
             </a>
-            <a href="{{ url('admin/halaman') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/halaman') ? 'active' : '' }}">
+            {{-- <a href="{{ url('admin/halaman') }}" class="list-group-item list-group-item-action py-2 ripple {{ Request::is('admin/halaman') ? 'active' : '' }}">
                 <span>Halaman</span>
-            </a>
+            </a> --}}
         </div>
     </div>
 </nav>

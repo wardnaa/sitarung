@@ -45,7 +45,7 @@
                         <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
                         {{-- {{ config('app.name', 'Laravel') }} --}}
                     </div>
-                    <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px;">
+                    <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px; max-width:200px;">
                         <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum, Penataan Ruang,</strong></p>
                         <p class="m-0 p-0" style="line-height: 1.2">Perumahan dan Kawasan Permukiman</p>
                         <p class="m-0 p-0" style="line-height: 1.2">Provinsi Bali</p>
@@ -118,7 +118,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-3">
             @yield('content')
         </main>
 

@@ -450,9 +450,11 @@
         if (information_container.style.display === 'none' || information_container.style.display === '') {
             information_container.style.marginLeft = marginLeft;
             information_container.style.display = 'block';
+            information_container.style.width = '320px';
             information_toggle.innerText = 'keyboard_double_arrow_left';
         } else {
             information_container.style.display = 'none';
+            information_container.style.width = '0px';
             information_toggle.innerText = 'expand_content';
         }
     });
@@ -470,9 +472,11 @@
             search_tempat.style.display = 'block';
             search_tempat.style.marginLeft = marginLeft;
             search_toggle.innerText = 'keyboard_double_arrow_left';
+            icon_toogle_container.style.width = '320px';
         } else {
             search_tempat.style.display = 'none';
             search_toggle.innerText = 'search';
+            icon_toogle_container.style.width = '0px';
         }
     });
 
@@ -482,6 +486,7 @@
             localStorage.setItem('sidebarshow', 'true');
             console.log('block');
             icon_toogle_container.style.zIndex = '1000';
+            icon_toogle_container.style.width = '320px';
             sidebarLeft.style.display = 'block';
             // collapsebtn.style.marginLeft = '300px';
             search_tempat.style.marginLeft = '347px';
@@ -490,11 +495,14 @@
                 floatingIcon[i].style.marginLeft = '314px';
             }
             elementOnTopLeft.style.backgroundColor = 'white';
+            elementOnTopLeft.style.display = "block";
         } else {
             icon_toogle_container.style.zIndex = '1100';
+            icon_toogle_container.style.width = '0px';
             localStorage.setItem('sidebarshow', 'false');
             sidebarLeft.style.display = 'none';
             elementOnTopLeft.style.backgroundColor = 'transparent';
+            elementOnTopLeft.style.display = "none";
             search_tempat.style.marginLeft = '33px';
             information_container.style.marginLeft = '34px';
             // collapsebtn.style.marginLeft = '0';

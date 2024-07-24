@@ -599,4 +599,8 @@
             opacity: opacity
         });
     }
+
+    setTimeout(() => {
+        document.getElementById('collapsebtn').click();
+    }, 1000);
 </script>

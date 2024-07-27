@@ -143,7 +143,7 @@
                     </li>
                 </ul>
                 <hr />
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <div class="col-5">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="daratan">
@@ -160,7 +160,7 @@
                 <div class="form-group">
                     <label class="label-group"><b>Opacity : </b></label>
                     <input class="form-range" id="opacity-global" type="range" class="form-range" min="0" max="1" step="0.1" value="1" />
-                </div>
+                </div> --}}
                 {{-- <div class="form-group">
                     <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
                     <select class="form-select" aria-label="Default select example" id="kabupaten">
@@ -257,14 +257,28 @@
                         <strong>Pilih Semua Layer</strong>
                     </label>
                 </div> -->
-                <div class="form-group">
-                    <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
+                <div class="p-2">
+                    <label class="label-group">Pilih <b>Provinsi/Kabupaten/Kota</b></label>
                     <select class="form-select" aria-label="Default select example" id="kabupaten">
-                        <option selected>Pilih Kabupaten</option>
+                        <option selected>Provinsi Bali</option>
                         @foreach ($kabupaten as $item)
                         <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="row p-2">
+                    <div class="col-5">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="daratan">
+                            <label class="form-check-label" for="daratan"><strong>Daratan</strong></label>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="perairan" value="perairan">
+                            <label class="form-check-label" for="perairan"><strong>Perairan</strong></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="list-group">
                     <!-- Get data polaruang with tree -->
@@ -326,6 +340,10 @@
                         @endif
                     </div>
                     @endforeach
+                </div>
+                <div class="form-group p-2">
+                    <label class="label-group"><b>Opacity : </b></label>
+                    <input class="form-range" id="opacity-global" type="range" class="form-range" min="0" max="1" step="0.1" value="1" />
                 </div>
             </div>
         </div>

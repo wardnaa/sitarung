@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,19 +21,33 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.6.1/dist/geosearch.css">
     <script src="https://unpkg.com/leaflet-geosearch@3.6.1/dist/geosearch.umd.js"></script>
 
-    
+    <link href="https://ljagis.github.io/leaflet-measure/leaflet-measure.css" rel="stylesheet">
+    <script src="https://ljagis.github.io/leaflet-measure/leaflet-measure.js"></script>
+
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+
+
+
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script> --}}
 
     <style>
-        #map { min-height: 500px; }
+        #map {
+            min-height: 500px;
+        }
     </style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-pemprov-bali.png') }}">
 </head>
+
 <body>
     <div id="app">
         <div class="bg-third text-white" style="padding:0; height:5px">&nbsp;</div>
@@ -40,17 +55,17 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-grey shadow-sm">
             <div class="container pt-1 pb-1">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <div class="d-flex align-items-stretch">
-                    <div class="span2">
-                        <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
-                        {{-- {{ config('app.name', 'Laravel') }} --}}
+                    <div class="d-flex align-items-stretch">
+                        <div class="span2">
+                            <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
+                            {{-- {{ config('app.name', 'Laravel') }} --}}
+                        </div>
+                        <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px; max-width:200px;">
+                            <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum, Penataan Ruang,</strong></p>
+                            <p class="m-0 p-0" style="line-height: 1.2">Perumahan dan Kawasan Permukiman</p>
+                            <p class="m-0 p-0" style="line-height: 1.2">Provinsi Bali</p>
+                        </div>
                     </div>
-                    <div class="span10 align-self-center" style="margin-left: 10px; font-size:15px; max-width:200px;">
-                        <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum, Penataan Ruang,</strong></p>
-                        <p class="m-0 p-0" style="line-height: 1.2">Perumahan dan Kawasan Permukiman</p>
-                        <p class="m-0 p-0" style="line-height: 1.2">Provinsi Bali</p>
-                    </div>
-                </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -88,31 +103,31 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                    </li>
+                    @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                     </ul> --}}
                 </div>
             </div>
@@ -157,4 +172,5 @@
         </footer>
     </div>
 </body>
+
 </html>

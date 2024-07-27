@@ -74,7 +74,9 @@
         <div style="margin-top: 3px;" id="search_result">
         </div>
     </div>
-    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 149px" id="information_toggle">expand_content</span>
+    <!-- <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 147px" id="location">near_me</span> -->
+    <!-- <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 186px" id="measure">straighten</span> -->
+    <span class="material-symbols-outlined sidebar_toggle floating-icon" style="margin-top: 147px" id="information_toggle">expand_content</span>
     <div class="information_container" style="display: none">
         <h3 style="font-size: 14px">Detail Legenda</h3>
 

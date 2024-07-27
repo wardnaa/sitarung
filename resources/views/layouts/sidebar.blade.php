@@ -161,8 +161,7 @@
                     <label class="label-group"><b>Opacity : </b></label>
                     <input class="form-range" id="opacity-global" type="range" class="form-range" min="0" max="1" step="0.1" value="1" />
                 </div>
-
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
                     <select class="form-select" aria-label="Default select example" id="kabupaten">
                         <option selected>Pilih Kabupaten</option>
@@ -170,7 +169,7 @@
                         <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="batas-kecamatan" value="batas-kecamatan">
                     <label class="form-check-label" for="batas-kecamatan"><strong>Batas Kecamatan</strong></label>
@@ -258,6 +257,15 @@
                         <strong>Pilih Semua Layer</strong>
                     </label>
                 </div> -->
+                <div class="form-group">
+                    <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
+                    <select class="form-select" aria-label="Default select example" id="kabupaten">
+                        <option selected>Pilih Kabupaten</option>
+                        @foreach ($kabupaten as $item)
+                        <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="list-group">
                     <!-- Get data polaruang with tree -->
                     @foreach ($polaruang as $item)

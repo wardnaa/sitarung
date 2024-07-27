@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Gistaru - Bali') }}</title>
+
+    <!-- Meta Description & Keywords -->
+    <meta name="description" content="Gistaru Bali - Sistem Informasi Tata Ruang Provinsi Bali">
+    <meta name="keywords" content="gistaru, bali, tata ruang, provinsi, bali, sistem informasi, tata ruang, bali, pemprov, pemprov bali, dinas, dinas pupr, dinas puprkim, dinas puprkim bali, dinas puprkim provinsi bali, pupr, puprkim, puprkim bali, puprkim provinsi bali, pemprov bali, pemprov, provinsi bali,
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -30,8 +34,6 @@
 
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
-
-
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -80,6 +80,7 @@
         $('#setuju').click(function() {
             $('#disclaimer').modal('hide');
             document.cookie = "disclaimer=1; max-age=" + 60 * 60 * 24;
+            localStorage.clear();
         });
 
         // show modal disclaimer if not show 1 day
@@ -156,6 +157,14 @@
         secondaryAreaUnit: 'sqmeters',
         activeColor: 'green',
         completedColor: 'blue'
+    }).addTo(map);
+
+
+
+    L.easyPrint({
+        title: 'Print Map',
+        position: 'topright',
+        sizeModes: ['A4Portrait', 'A4Landscape']
     }).addTo(map);
 
 
@@ -293,7 +302,10 @@
 
     allKabupaten.change(function() {
         const kabupatenValue = allKabupaten.val();
-        if (kabupatenValue != 'Pilih Kabupaten') {
+        console.log({
+            kabupatenValue
+        });
+        if (kabupatenValue != 'Provinsi Bali') {
             batasKecamatan.is(':checked') ? getKabupaten(kabupatenValue) : clearLayer();
         }
     });
@@ -301,10 +313,11 @@
     batasKecamatan.change(function() {
         const ischecked = $(this).is(':checked');
         if (ischecked) {
-            if (allKabupaten.val() == 'Pilih Kabupaten') {
+            console.log(allKabupaten.val());
+            if (allKabupaten.val() == 'Provinsi Bali') {
                 for (let i = 0; i < allKabupaten[0].length; i++) {
                     const kabupatenValue = allKabupaten[0][i].value;
-                    if (kabupatenValue != 'Pilih Kabupaten') {
+                    if (kabupatenValue != 'Provinsi Bali') {
                         getKabupaten(kabupatenValue, i);
                     }
                 }
@@ -322,7 +335,7 @@
         if (ischecked) {
             for (let i = 0; i < allKabupaten[0].length; i++) {
                 const kabupatenValue = allKabupaten[0][i].value;
-                if (kabupatenValue != 'Pilih Kabupaten') {
+                if (kabupatenValue != 'Provinsi Bali') {
                     getKabupatenPolaRuang(kabupatenValue, i);
                 }
             }
@@ -386,16 +399,16 @@
             });
             switch (menuName.toLowerCase()) {
                 case 'rencana pola ruang':
-                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
-                        alert('Pilih Kabupaten terlebih dahulu');
+                    if (kabupatenValue == 'Provinsi Bali' && item.checked) {
+                        alert('Pilih Kabupaten/Kota terlebih dahulu');
                         item.checked = false;
                         return;
                     }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
-                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
-                        alert('Pilih Kabupaten terlebih dahulu');
+                    if (kabupatenValue == 'Provinsi Bali' && item.checked) {
+                        alert('Pilih Kabupaten/Kota terlebih dahulu');
                         item.checked = false;
                         return;
                     }
@@ -479,16 +492,16 @@
             const id = item.value;
             switch (id) {
                 case '1':
-                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
-                        alert('Pilih Kabupaten terlebih dahulu');
+                    if (kabupatenValue == 'Provinsi Bali' && item.checked) {
+                        alert('Pilih Kabupaten/Kota terlebih dahulu');
                         item.checked = false;
                         return;
                     }
                     item.checked ? getKabupatenPolaRuang(kabupatenValue) : clearLayer('rpr');
                     break;
                 case '2':
-                    if (kabupatenValue == 'Pilih Kabupaten' && item.checked) {
-                        alert('Pilih Kabupaten terlebih dahulu');
+                    if (kabupatenValue == 'Provinsi Bali' && item.checked) {
+                        alert('Pilih Kabupaten/Kota terlebih dahulu');
                         item.checked = false;
                         return;
                     }

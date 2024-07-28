@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('jsonfile')->nullable();
             // Add isactive column 0 / 1
             $table->boolean('header')->default(1);
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }

@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Gistaru - Bali') }}</title>
+
+    <!-- Meta Description & Keywords -->
+    <meta name="description" content="Gistaru Bali - Sistem Informasi Tata Ruang Provinsi Bali">
+    <meta name="keywords" content="gistaru, bali, tata ruang, provinsi, bali, sistem informasi, tata ruang, bali, pemprov, pemprov bali, dinas, dinas pupr, dinas puprkim, dinas puprkim bali, dinas puprkim provinsi bali, pupr, puprkim, puprkim bali, puprkim provinsi bali, pemprov bali, pemprov, provinsi bali,
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -30,8 +34,6 @@
 
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
-
-
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -144,12 +146,12 @@
                     <div class="col-md-4">
                         <div class="d-flex align-items-stretch">
                             <div class="span2">
-                                <img src="{{ asset('images/logo-pemprov-bali.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
+                                <img src="{{ asset('images/gistaru.png') }}" alt="{{ config('app.name', 'Laravel') }}" height="60">
                                 {{-- {{ config('app.name', 'Laravel') }} --}}
                             </div>
                             <div class="span10 align-self-center" style="margin-left: 10px">
-                                <p class="m-0 p-0" style="line-height: 1.2">Pemerintah Provinsi Bali</p>
-                                <p class="m-0 p-0" style="line-height: 1.2"><strong>Dinas Pekerjaan Umum Pemerintah Provinsi Bali</strong></p>
+                                <p class="m-0 p-0" style="line-height: 1.2">Gistaru Bali</p>
+                                <p class="m-0 p-0" style="line-height: 1.2"><strong>Sistem Informasi Tata Ruang Provinsi Bali</strong></p>
                             </div>
                         </div>
                         <br />
@@ -157,7 +159,8 @@
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
-                        <!-- <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p> -->
+                        <hr class="bg-white" />
+                        {{-- <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p> --}}
                         <p class="m-0 p-0">No. Telp: (0361) 222883</p>
                         <p class="m-0 p-0">E-mail : <a class="text-warning" href="mailto:puprkim@baliprov.go.id" target="_blank" rel="noopener">puprkim@baliprov.go.id</a></p>
                         <p class="m-0 p-0">Facebook: <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>

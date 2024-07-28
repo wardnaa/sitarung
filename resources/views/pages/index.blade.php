@@ -17,7 +17,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="z-index: 1100">
                                     <!-- add link download here pdf folder-->
-                                    <li><a class="dropdown-item" href="{{ url('pdf/Perda RTRW Kabupaten Serang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Perda RTRW Provinsi Bali</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pdf/Perda RTRW Provinsi Bali.pdf') }}" target="_blank"><i class="fa fa-download"></i> Perda RTRW Provinsi Bali</a></li>
                                     <li><a class="dropdown-item" href="{{ url('pdf/Rencana Pola Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Pola Ruang</a></li>
                                     <li><a class="dropdown-item" href="{{ url('pdf/Rencana Struktur Ruang.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Rencana Struktur Ruang</a></li>
                                     <li><a class="dropdown-item" href="{{ url('pdf/Kawasan Strategis.pdf') }}" target="_blank"><i class="fa fa-download"></i> Peta Kawasan Strategis</a></li>

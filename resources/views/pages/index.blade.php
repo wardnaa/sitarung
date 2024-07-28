@@ -164,7 +164,7 @@
     L.easyPrint({
         title: 'Print Map',
         position: 'topright',
-        sizeModes: ['A4Portrait', 'A4Landscape']
+        sizeModes: ['A4Portrait', 'A4Landscape'],
     }).addTo(map);
 
 

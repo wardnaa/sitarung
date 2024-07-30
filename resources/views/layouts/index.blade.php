@@ -15,7 +15,7 @@
     <meta name="keywords" content="gistaru, bali, tata ruang, provinsi, bali, sistem informasi, tata ruang, bali, pemprov, pemprov bali, dinas, dinas pupr, dinas puprkim, dinas puprkim bali, dinas puprkim provinsi bali, pupr, puprkim, puprkim bali, puprkim provinsi bali, pemprov bali, pemprov, provinsi bali,
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link rel=" dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -28,12 +28,16 @@
     <link href="https://ljagis.github.io/leaflet-measure/leaflet-measure.css" rel="stylesheet">
     <script src="https://ljagis.github.io/leaflet-measure/leaflet-measure.js"></script>
 
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easyprint@2.1.9/libs/leaflet.min.css"> -->
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
-
+    
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easyprint@2.1.9/dist/bundle.min.js"></script>
+
+    <!-- <script src=" https://raw.githubusercontent.com/Igor-Vladyka/leaflet.browser.print/master/dist/leaflet.browser.print.min.js"></script> -->
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

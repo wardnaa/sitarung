@@ -164,7 +164,7 @@
                 {{-- <div class="form-group">
                     <label class="label-group">Pilih <b>Kabupaten/Kota</b></label>
                     <select class="form-select" aria-label="Default select example" id="kabupaten">
-                        <option selected>Pilih Kabupaten</option>
+                        <option selected>Provinsi Bali</option>
                         @foreach ($kabupaten as $item)
                         <option value="{{ $item->id }}">{{ ucwords(strtolower($item->nama)) }}</option>
                         @endforeach
@@ -214,7 +214,7 @@
                                 <!-- badge -->
                                 {{-- <span class="badge rounded-pill bg-primary mt-1" style="float: right">:::</span> --}}
                                 <div class="btn-group" role="group" id="btnGroup">
-                                    <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" menu-name="opacity_{{ str_replace(' ', '_', strtolower($child->nama)) }}" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
+                                    <a class="btn btn-outline-success btn-xs badge badge-pill collapsed text-dark" data-toggle="collapse" menu-name="opacity_{{ str_replace(' ', '_', strtolower($item->nama)) }}" href="#legend82" role="button" aria-expanded="false" aria-controls="legend82"><i class="fas fa-list fs-sm"></i></a><a class="btn btn-outline-success btn-xs badge badge-pill text-dark" data-html="true" role="button" data-container="body" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><i class="fas fa-adjust fs-sm"></i></a>
                                 </div>
                             </div>
                         </div>

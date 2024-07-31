@@ -26,8 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now();
+        $oneMonthAgo = $now->copy()->subMonth();
+
         // Get date from visitor table group by visited_at
         $visits = Visitor::select(DB::raw('LEFT(visited_at,10) as visited_at'))
+        ->whereBetween('visited_at', [$oneMonthAgo, $now])
         ->groupBy(DB::raw('LEFT(visited_at,10)'))
         ->orderBy('visited_at', 'asc')
         ->get();
@@ -36,7 +40,7 @@ class HomeController extends Controller
             $visit_date = Carbon::parse($visitor->visited_at)->format('Y-m-d');
             $visit_count = Visitor::where(DB::raw('LEFT(visited_at,10)'), $visit_date)->count();
             $datas[] = [
-                'visit_date' => $visit_date,
+                'visit_date' => Carbon::parse($visit_date)->format('m-d'),
                 'visit_count' => $visit_count,
             ];
         }

@@ -29,6 +29,9 @@
     {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
     <script src="https://cdn.tiny.cloud/1/aauve4905iimf7qqzqkwizyzt06vs05husk8b7up2vkeigmf/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>

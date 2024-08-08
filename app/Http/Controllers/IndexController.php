@@ -15,6 +15,7 @@ class IndexController extends Controller
     // Make function __construct visitor count
     public function __construct()
     {
+        $this->middleware('auth');
         $visitorCount = Visitor::count();
         view()->share('visitorCount', $visitorCount);
     }

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/polaruang/{id}', [App\Http\Controllers\PolaRuangController::class, 'showApi']);
 // });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin/kabupaten', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

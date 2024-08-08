@@ -19,6 +19,9 @@
                         <p class="m-0 p-0">No. Telp: (0361) 222883</p>
                         <p class="m-0 p-0">E-mail : <a class="text-warning" href="mailto: puprkim@baliprov.go.id" target="_blank" rel="noopener"> puprkim@baliprov.go.id</a></p>
                         <p class="m-0 p-0">Facebook: <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>
+                        <br />
+                        <p class="m-0 p-0">Link : <a class="text-warning" href="https://balikom.info/SosialisasiPerdaRTRWPBali">Sosialisasi Perda RTRWP Bali</a></p>
+                        <p class="m-0 p-0">Link : <a class="text-warning" href="http://linktr.ee/simandaratarubali">Simandaratarubali</a></p>
                     </div>
                 </div>            
             </div>

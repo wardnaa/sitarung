@@ -159,15 +159,17 @@
                             </div>
                         </div>
                         <br />
-                        <p style="line-height: 1.2">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</p>
+                        {{-- <p style="line-height: 1.2; font-size:14px;">Copyright &copy; 2024 Sistem Informasi Wilayah dan Tata Ruang Bali.</p> --}}
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kontak Kami</strong></p>
                         <hr class="bg-white" />
-                        {{-- <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p> --}}
+                        <p>Alamat: <a class="text-warning" href="https://goo.gl/maps/edKHBSGJhwrnjN5Y6">Jl. Beliton No.2, Dauh Puri Kangin, Kec. Denpasar Bar., Kota Denpasar, Bali 80232</a></p>
                         <p class="m-0 p-0">No. Telp: (0361) 222883</p>
                         <p class="m-0 p-0">E-mail : <a class="text-warning" href="mailto:puprkim@baliprov.go.id" target="_blank" rel="noopener">puprkim@baliprov.go.id</a></p>
-                        <p class="m-0 p-0">Facebook: <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>
+                        <p class="m-0 p-0">Facebook : <a class="text-warning" href="https://www.facebook.com/DinasPUPRKIMProvinsiBali">DinasPUPRKIMProvinsiBali</a></p>
+                        <p class="m-0 p-0">Link : <a class="text-warning" href="https://balikom.info/SosialisasiPerdaRTRWPBali">Sosialisasi Perda RTRWP Bali</a></p>
+                        <p class="m-0 p-0">Link : <a class="text-warning" href="http://linktr.ee/simandaratarubali">Simandaratarubali</a></p>
                     </div>
                     <div class="col-md-4">
                         <p class="m-0 p-0"><strong>Kebijakan Privasi</strong></p>
@@ -177,6 +179,22 @@
                 </div>
             </div>
         </footer>
+        <div class="text-white" style="background-color:#6b130c; padding:3px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="m-0 p-0">Sistem Informasi Wilayah dan Tata Ruang Bali.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="m-0 p-0" style="text-align: right !important;">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> All Right Reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
